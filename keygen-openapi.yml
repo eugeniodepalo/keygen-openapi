@@ -91,6 +91,8 @@ paths:
                 properties:
                   data:
                     $ref: "#/components/schemas/Token"
+                required:
+                  - data
         default:
           $ref: "#/components/responses/Error"
       security:
@@ -1731,6 +1733,20 @@ paths:
                           additionalProperties: true
                   required:
                     - type
+      responses:
+        200:
+          description: Policy updated successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Policy"
+                required:
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
     delete:
       summary: Delete a policy
       description: |
@@ -1824,6 +1840,20 @@ paths:
                       - id
               required:
                 - data
+      responses:
+        201:
+          description: Policy entitlements attached successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/PolicyEntitlement"
+        default:
+          $ref: "#/components/responses/Error"
     delete:
       summary: Detach policy entitlements
       description: |
@@ -2268,6 +2298,20 @@ paths:
                             - data
                   required:
                     - type
+      responses:
+        200:
+          description: User updated successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/User"
+                required:
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
     delete:
       summary: Delete a user
       description: |
@@ -2389,8 +2433,8 @@ paths:
                       minLength: 8
                       description: The new password for the user.
                   required:
-                    - token
-                    - password
+                    - passwordResetToken
+                    - newPassword
               required:
                 - meta
       responses:
@@ -3523,7 +3567,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: "#/components/schemas/License"
+                    $ref: "#/components/schemas/LicenseFile"
                 required:
                   - data
         default:
@@ -3795,7 +3839,7 @@ paths:
               required:
                 - data
       responses:
-        200:
+        201:
           description: License entitlements attached successfully
           content:
             application/vnd.api+json:
@@ -3805,7 +3849,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Entitlement"
+                      $ref: "#/components/schemas/LicenseEntitlement"
                 required:
                   - data
         default:
@@ -4512,7 +4556,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: "#/components/schemas/Machine"
+                    $ref: "#/components/schemas/MachineFile"
                 required:
                   - data
         default:
@@ -6224,6 +6268,123 @@ components:
         - attributes
         - relationships
         - links
+    PolicyEntitlement:
+      summary: The policy entitlement object
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [policy-entitlements]
+        attributes:
+          type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+          required:
+            - created
+            - updated
+        relationships:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [accounts]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            entitlement:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [entitlements]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            policy:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [policies]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+          required:
+            - account
+            - entitlement
+            - policy
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              format: uri
+          required:
+            - self
+      required:
+        - id
+        - type
+        - attributes
+        - relationships
+        - links
     User:
       type: object
       summary: The user object
@@ -6798,6 +6959,212 @@ components:
         - attributes
         - relationships
         - links
+    LicenseEntitlement:
+      summary: The license entitlement object
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [license-entitlements]
+        attributes:
+          type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+          required:
+            - created
+            - updated
+        relationships:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [accounts]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            entitlement:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [entitlements]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            license:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [licenses]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+          required:
+            - account
+            - entitlement
+            - license
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              format: uri
+          required:
+            - self
+      required:
+        - id
+        - type
+        - attributes
+        - relationships
+        - links
+    LicenseFile:
+      summary: The license file object
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [license-files]
+        attributes:
+          type: object
+          properties:
+            certificate:
+              type: string
+            ttl:
+              type: integer
+              format: int64
+            expiry:
+              type: string
+              format: date-time
+            issued:
+              type: string
+              format: date-time
+          required:
+            - certificate
+            - ttl
+            - expiry
+            - issued
+        relationships:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [accounts]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            license:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [licenses]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+          required:
+            - account
+            - license
+      required:
+        - id
+        - type
+        - attributes
+        - relationships
     Machine:
       type: object
       summary: The machine object
@@ -7074,6 +7441,95 @@ components:
             - links
       required:
         - data
+    MachineFile:
+      summary: The machine file object
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [machine-files]
+        attributes:
+          type: object
+          properties:
+            certificate:
+              type: string
+            ttl:
+              type: integer
+              format: int64
+            expiry:
+              type: string
+              format: date-time
+            issued:
+              type: string
+              format: date-time
+          required:
+            - certificate
+            - ttl
+            - expiry
+            - issued
+        relationships:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [accounts]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            machine:
+              type: object
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [machines]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+          required:
+            - account
+            - machine
+      required:
+        - id
+        - type
+        - attributes
+        - relationships
     Process:
       type: object
       summary: The process object
