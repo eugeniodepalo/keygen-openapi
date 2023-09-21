@@ -5194,6 +5194,316 @@ paths:
                   - data
         default:
           $ref: "#/components/responses/Error"
+  /account/{account}/me:
+    get:
+      tags:
+        - Profiles
+      summary: Who Am I?
+      description: |
+        Retrieves the details of the currently authenticated bearer i.e. the resource who the current API token belongs
+        to. Utilize this to determine who the current user is, what token they used, to retrieve information on who made
+        the API request.
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
+          schema:
+            type: string
+      responses:
+        200:
+          description: Profile retrieved successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/User"
+                required:
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
+  /account/{account}/passwords:
+    post:
+      tags:
+        - Passwords
+      summary: Forgot password
+      description: |
+        Request a password reset for a user. When the user does not already have a password, they will be invited to set
+        a password. This will send an email to the user, if it is a valid email address that exists in our system. The
+        email will contain a link leading to a password reset form securely hosted by Keygen. To send a customized
+        email, see below.
+
+        When the account is protected, and the user does not yet have a password set, they will not be able to set their
+        initial password. Passwordless users are considered "managed" users, and depending on whether or not the account
+        is protected, they may not have permission to set a password.
+
+        To work around this, you may do one of the following:
+
+        - Set a temporary password on the user. You can do this when creating the user, or you can do this after the
+          fact. Once a password has been set, the user is no longer considered "managed" and may reset their password
+          normally.
+        - Set the account to unprotected. Though note what this entails — you may want to set all policies to protected
+          to ensure certain actions can't be taken by users, such as license creation.
+
+        In most cases, we recommend #1.
+      security:
+        - {}
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                      description: The email of the user.
+                    deliver:
+                      type: boolean
+                      default: true
+                      description: Whether or not to email a password reset notification to the user.
+                  required:
+                    - email
+              required:
+                - meta
+      responses:
+        202:
+          description: Password reset request accepted
+        default:
+          $ref: "#/components/responses/Error"
+  /account/{account}/users/{user}/second-factors:
+    post:
+      tags:
+        - Second factors
+      summary: Add a second factor
+      description: |
+        Adds a new second factor for the user. After adding the second factor, it must be enabled via [an update](https://keygen.sh/docs/api/users/#second-factors-update).
+        To enable the second factor, a valid OTP must be provided.
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
+          required: true
+          schema:
+            type: string
+        - name: user
+          in: path
+          description: The identifier (UUID) or email of the user the second factor is for.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                      description: When the user does not have an existing second factor, the password of the user.
+                    otp:
+                      type: string
+                      description: When the user has an existing second factor, the OTP code of the second factor.
+      responses:
+        201:
+          description: Second factor added successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/SecondFactor"
+                required:
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
+    get:
+      tags:
+        - Second factors
+      summary: List second factors
+      description: |
+        Returns a list of second factors. The second factors are returned sorted by creation date, with the most recent
+        second factors appearing first.
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
+          required: true
+          schema:
+            type: string
+        - name: user
+          in: path
+          description: The identifier (UUID) or email of the user the second factors are for.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Second factors retrieved successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SecondFactor"
+                required:
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
+  /account/{account}/users/{user}/second-factors/{second-factor}:
+    get:
+      tags:
+        - Second factors
+      summary: Retrieve a second factor
+      description: Retrieves the details of an existing second factor.
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
+          required: true
+          schema:
+            type: string
+        - name: user
+          in: path
+          description: The identifier (UUID) or email of a user the second factor belongs to.
+          required: true
+          schema:
+            type: string
+        - name: second-factor
+          in: path
+          description: The identifier (UUID) of the second factor.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Second factor retrieved successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/SecondFactor"
+                required:
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
+    patch:
+      tags:
+        - Second factors
+      summary: Update a second factor
+      description: |
+        Update an existing second factor for the user. This can be used to enable and disable a second factor as-needed.
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
+          required: true
+          schema:
+            type: string
+        - name: user
+          in: path
+          description: The identifier (UUID) or email of a user the second factor belongs to.
+          required: true
+          schema:
+            type: string
+        - name: second-factor
+          in: path
+          description: The identifier (UUID) of the second factor to be updated.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    attributes:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                          description: Whether or not the second factor is enabled.
+                meta:
+                  type: object
+                  properties:
+                    otp:
+                      type: string
+                      description: |
+                        The OTP code of the second factor, generated by an Authenticator app via the second factor's
+                        secret.
+                  required:
+                    - otp
+              required:
+                - meta
+      responses:
+        200:
+          description: Second factor updated successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/SecondFactor"
+                required:
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      tags:
+        - Second factors
+      summary: Delete a second factor
+      description: Permanently deletes a second factor. It cannot be undone.
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
+          required: true
+          schema:
+            type: string
+        - name: user
+          in: path
+          description: The identifier (UUID) or email of a user the second factor belongs to.
+          required: true
+          schema:
+            type: string
+        - name: second-factor
+          in: path
+          description: The identifier (UUID) of the second factor to be deleted.
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Second factor deleted successfully
+        default:
+          $ref: "#/components/responses/Error"
 webhooks:
   event:
     post:
@@ -8078,6 +8388,100 @@ components:
         - attributes
         - relationships
         - links
+    SecondFactor:
+      type: object
+      summary: The second factor object
+      description: |
+        Below you will find the various attributes for the second factor resource, as well as the resource's
+        relationships.
+      properties:
+        attributes:
+          type: object
+          properties:
+            uri:
+              type: string
+              description: The provisioning URI of the second factor.
+            secret:
+              type: string
+              description: The secret of the second factor.
+            enabled:
+              type: boolean
+              description: Whether or not the second factor is enabled.
+            created:
+              type: string
+              format: date-time
+              description: When the second factor was created.
+            updated:
+              type: string
+              format: date-time
+              description: When the second factor was last updated.
+          required:
+            - uri
+            - secret
+            - enabled
+            - created
+            - updated
+        relationships:
+          type: object
+          properties:
+            account:
+              type: object
+              description: The account that the second factor belongs to.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [accounts]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            user:
+              type: object
+              description: The user the second factor belongs to.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [users]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+          required:
+            - account
+            - user
+      required:
+        - attributes
+        - relationships
     Error:
       type: object
       properties:
