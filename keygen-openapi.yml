@@ -27,6 +27,8 @@ servers:
 paths:
   /accounts/{account}/tokens:
     post:
+      tags:
+        - Tokens
       summary: Generate a token
       description: |
         Generate a new token resource for a user, using the user's email and password. Keygen does not store your tokens
@@ -98,6 +100,8 @@ paths:
       security:
         - BasicAuth: []
     get:
+      tags:
+        - Tokens
       summary: List all tokens
       description: |
         Returns a list of tokens. The tokens are returned sorted by creation date, with the most recent tokens appearing
@@ -183,6 +187,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/tokens/{token}:
     get:
+      tags:
+        - Tokens
       summary: Retrieve a token
       description: Retrieves the details of an existing token.
       parameters:
@@ -213,6 +219,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     put:
+      tags:
+        - Tokens
       summary: Regenerate a token
       description: |
         Regenerate an existing token resource. This will replace the token attribute with a new secure token, and extend
@@ -245,6 +253,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Tokens
       summary: Revoke a token
       description: |
         Permanently revokes a token. It cannot be undone. This action also immediately invalidates all sessions using
@@ -269,6 +279,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/products:
     post:
+      tags:
+        - Products
       summary: Create a product
       description: Creates a new product resource.
       parameters:
@@ -341,6 +353,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Products
       summary: List all products
       description: |
         Returns a list of products. The products are returned sorted by creation date, with the most recent products
@@ -405,6 +419,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/products/{product}:
     get:
+      tags:
+        - Products
       summary: Retrieve a product
       description: Retrieves the details of an existing product.
       parameters:
@@ -435,6 +451,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Products
       summary: Update a product
       description: |
         Updates the specified product resource by setting the values of the parameters passed. Any parameters not
@@ -508,6 +526,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Products
       summary: Delete a product
       description: |
         Permanently deletes a product. It cannot be undone. This action also immediately deletes any policies, licenses
@@ -532,6 +552,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/products/{product}/token:
     post:
+      tags:
+        - Products
       summary: Generate a product token
       description: Generates a new product token resource. Product tokens do not expire.
       parameters:
@@ -587,6 +609,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/entitlements:
     post:
+      tags:
+        - Entitlements
       summary: Create an entitlement
       description: Creates a new entitlement resource.
       parameters:
@@ -645,6 +669,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Entitlements
       summary: List all entitlements
       description: |
         Returns a list of entitlements. The entitlements are returned sorted by creation date, with the most recent
@@ -708,6 +734,8 @@ paths:
                   - links
   /accounts/{account}/entitlements/{entitlement}:
     get:
+      tags:
+        - Entitlements
       summary: Retrieve an entitlement
       description: Retrieves the details of an existing entitlement.
       parameters:
@@ -738,6 +766,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Entitlements
       summary: Update an entitlement
       description: |
         Updates the specified entitlement resource by setting the values of the parameters passed. Any parameters not
@@ -797,6 +827,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Entitlements
       summary: Delete an entitlement
       description: |
         Permanently deletes an entitlement. The entitlement will immediately be removed from all licenses and policies.
@@ -821,6 +853,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/groups:
     post:
+      tags:
+        - Groups
       summary: Create a group
       description: Creates a new group resource.
       parameters:
@@ -890,6 +924,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Groups
       summary: List all groups
       description: |
         Returns a list of groups. This will include all groups associated with the authenticated bearer, including
@@ -953,6 +989,8 @@ paths:
                   - links
   /accounts/{account}/groups/{group}:
     get:
+      tags:
+        - Groups
       summary: Retrieve a group
       description: Retrieves the details of an existing group.
       parameters:
@@ -983,6 +1021,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Groups
       summary: Update a group
       description: |
         Updates the specified group resource by setting the values of the parameters passed. Any parameters not provided
@@ -1051,6 +1091,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Groups
       summary: Delete a group
       description: |
         Permanently deletes a group. The group will immediately be removed from all users, licenses and machines. It
@@ -1075,6 +1117,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/policies:
     post:
+      tags:
+        - Policies
       summary: Create a policy
       description: Creates a new policy resource.
       parameters:
@@ -1384,6 +1428,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Policies
       summary: List all policies
       description: |
         Returns a list of policies. The policies are returned sorted by creation date, with the most recent policies
@@ -1453,6 +1499,8 @@ paths:
                   - links
   /accounts/{account}/policies/{policy}:
     get:
+      tags:
+        - Policies
       summary: Retrieve a policy
       description: Retrieves the details of an existing policy.
       parameters:
@@ -1483,6 +1531,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Policies
       summary: Update a policy
       description: |
         Updates the specified policy resource by setting the values of the parameters passed. Any parameters not
@@ -1748,6 +1798,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Policies
       summary: Delete a policy
       description: |
         Permanently deletes a policy. It cannot be undone. This action also immediately deletes any licenses that the
@@ -1772,6 +1824,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/policies/{policy}/pool:
     delete:
+      tags:
+        - Policies
       summary: Pop key from pool
       description: |
         Pop off (delete) a key from the policy's pool of pre-determined keys. The returned key is only available
@@ -1796,6 +1850,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/policies/{policy}/entitlements:
     post:
+      tags:
+        - Policies
       summary: Attach policy entitlements
       description: |
         Attach entitlements to a policy. This will immediately be taken into effect for all future license validations.
@@ -1855,6 +1911,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Policies
       summary: Detach policy entitlements
       description: |
         Detach entitlements from a policy. This will immediately be taken into effect for all future license
@@ -1901,6 +1959,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Policies
       summary: List policy entitlements
       description: |
         Returns a list of entitlements attached to the policy. The entitlements are returned sorted by creation date,
@@ -1969,6 +2029,8 @@ paths:
                   - links
   /accounts/{account}/users:
     post:
+      tags:
+        - Users
       summary: Create a user
       description: |
         Creates a new user resource. Users may be created with only an email address — no name or password is
@@ -2071,6 +2133,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Users
       summary: List all users
       description: |
         Returns a list of users. The users are returned sorted by creation date, with the most recent users appearing
@@ -2186,6 +2250,8 @@ paths:
                   - links
   /accounts/{account}/users/{user}:
     get:
+      tags:
+        - Users
       summary: Retrieve a user
       description: |
         Retrieves the details of an existing user.
@@ -2217,6 +2283,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Users
       summary: Update a user
       description: |
         Updates the specified user resource by setting the values of the parameters passed. Any parameters not provided
@@ -2313,6 +2381,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Users
       summary: Delete a user
       description: |
         Permanently deletes a user. It cannot be undone. This action also immediately deletes any licenses and machines
@@ -2337,6 +2407,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/users/{user}/actions/update-password:
     post:
+      tags:
+        - Users
       summary: Update password
       description: |
         Action to update the user's password. A user's password can **only** be updated when authenticated as the given
@@ -2392,6 +2464,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/users/{user}/actions/reset-password:
     post:
+      tags:
+        - Users
       summary: Reset password
       description: |
         Fulfill a user's password reset request. Password reset tokens expire 24 hours after [requesting the reset](https://keygen.sh/docs/api/passwords/#passwords-forgot).
@@ -2453,6 +2527,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/users/{user}/actions/ban:
     post:
+      tags:
+        - Users
       summary: Ban user
       description: |
         Action to ban a user. Banned users cannot authenticate with the API, and all licenses the user owns will have a
@@ -2486,6 +2562,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/users/{user}/actions/unban:
     post:
+      tags:
+        - Users
       summary: Unban user
       description: Action to unban a user.
       parameters:
@@ -2517,6 +2595,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/users/{user}/token:
     post:
+      tags:
+        - Users
       summary: Generate a user token
       description: |
         Generates a new user token resource. User tokens, by default, expire after 2 weeks. Though this can be adjusted
@@ -2578,6 +2658,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/users/{user}/group:
     put:
+      tags:
+        - Users
       summary: Change group
       description: |
         Change a user's group relationship. This will immediately transfer the user resource to the new group. Changing
@@ -2631,6 +2713,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses:
     post:
+      tags:
+        - Licenses
       summary: Create a license
       description: Creates a new license resource.
       parameters:
@@ -2773,6 +2857,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Licenses
       summary: List all licenses
       description: |
         Returns a list of licenses. The licenses are returned sorted by creation date, with the most recent licenses
@@ -2916,6 +3002,8 @@ paths:
                   - links
   /accounts/{account}/licenses/{license}:
     get:
+      tags:
+        - Licenses
       summary: Retrieve a license
       description: Retrieves the details of an existing license.
       parameters:
@@ -2948,6 +3036,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Licenses
       summary: Update a license
       description: |
         Updates the specified license resource by setting the values of the parameters passed. Any parameters not
@@ -3024,6 +3114,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Licenses
       summary: Delete a license
       description: |
         Permanently deletes a license. It cannot be undone. This action also immediately deletes any machines that the
@@ -3048,6 +3140,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/validate:
     post:
+      tags:
+        - Licenses
       summary: Validate by license ID
       description: |
         Action to validate a license. This will check the following: if the license is suspended, if the license is
@@ -3241,81 +3335,30 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/actions/validate-key:
     post:
-    summary: Validate by license key
-    description: |
-      Action to validate a license key. This will look up the license by its key and check the following: if the license
-      is suspended, if the license is expired, if the license is overdue for check-in, and if the license meets its
-      machine requirements (if [strict](https://keygen.sh/docs/api/policies/#policies-object-attrs-strict)).
+      tags:
+        - Licenses
+      summary: Validate by license key
+      description: |
+        Action to validate a license key. This will look up the license by its key and check the following: if the license
+        is suspended, if the license is expired, if the license is overdue for check-in, and if the license meets its
+        machine requirements (if [strict](https://keygen.sh/docs/api/policies/#policies-object-attrs-strict)).
 
-      Additional scopes can also be applied, and may be required by the license's policy, e.g. a policy may set
-      `requireFingerprintScope=true`, which will require that you specify a `scope.fingerprint` within the validation
-      request in order to pass validation.
+        Additional scopes can also be applied, and may be required by the license's policy, e.g. a policy may set
+        `requireFingerprintScope=true`, which will require that you specify a `scope.fingerprint` within the validation
+        request in order to pass validation.
 
-      The scoping feature allows you to easily set up a node-locked or floating licensing model without additional logic
-      on your end.
-    parameters:
-      - name: account
-        in: path
-        description: The identifier (UUID) or slug of your Keygen account.
-        schema:
-          type: string
-        required: true
-    security:
-      - {}
-    requestBody:
-      content:
-        application/vnd.api+json:
+        The scoping feature allows you to easily set up a node-locked or floating licensing model without additional logic
+        on your end.
+      parameters:
+        - name: account
+          in: path
+          description: The identifier (UUID) or slug of your Keygen account.
           schema:
-            type: object
-            properties:
-              meta:
-                type: object
-                properties:
-                  nonce:
-                    type: string
-                    description: |
-                      An arbitrary numerical nonce value that will be echoed back within the signed response body.
-                  scope:
-                    type: object
-                    description: |
-                      Scope to validate the license against i.e. if a license's key is associated with product X,
-                      but the validation request is scoped to product Y, it will fail validation because a
-                      matching license doesn't exist for that product.
-                    properties:
-                      product:
-                        type: string
-                        description: The identifier (UUID) of the product to validate against.
-                      policy:
-                        type: string
-                        description: The identifier (UUID) of the policy to validate against.
-                      fingerprints:
-                        type: array
-                        description: An array of machine fingerprints to validate against.
-                        items:
-                          type: string
-                      fingerprint:
-                        type: string
-                        description: A single fingerprint of a machine to validate against.
-                      machine:
-                        type: string
-                        description: The identifier (UUID) of the machine to validate against.
-                      user:
-                        type: string
-                        description: The identifier (UUID) or email of the user to validate against.
-                      entitlements:
-                        type: array
-                        description: An array of entitlement codes to validate against.
-                        items:
-                          type: string
-                      checksum:
-                        type: string
-                        description: The checksum of an artifact to validate against.
-                      version:
-                        type: string
-                        description: The version of a release to validate against.
-    responses:
-      200:
-        description: License validated successfully
+            type: string
+          required: true
+      security:
+        - {}
+      requestBody:
         content:
           application/vnd.api+json:
             schema:
@@ -3324,58 +3367,113 @@ paths:
                 meta:
                   type: object
                   properties:
-                    ts:
-                      type: string
-                      format: date-time
-                    valid:
-                      type: boolean
-                    detail:
-                      type: string
-                    code:
-                      type: string
                     nonce:
-                      type: integer
+                      type: string
+                      description: |
+                        An arbitrary numerical nonce value that will be echoed back within the signed response body.
                     scope:
                       type: object
+                      description: |
+                        Scope to validate the license against i.e. if a license's key is associated with product X,
+                        but the validation request is scoped to product Y, it will fail validation because a
+                        matching license doesn't exist for that product.
                       properties:
                         product:
                           type: string
+                          description: The identifier (UUID) of the product to validate against.
                         policy:
                           type: string
+                          description: The identifier (UUID) of the policy to validate against.
                         fingerprints:
                           type: array
+                          description: An array of machine fingerprints to validate against.
                           items:
                             type: string
                         fingerprint:
                           type: string
+                          description: A single fingerprint of a machine to validate against.
                         machine:
                           type: string
+                          description: The identifier (UUID) of the machine to validate against.
                         user:
                           type: string
+                          description: The identifier (UUID) or email of the user to validate against.
                         entitlements:
                           type: array
+                          description: An array of entitlement codes to validate against.
                           items:
                             type: string
                         checksum:
                           type: string
+                          description: The checksum of an artifact to validate against.
                         version:
                           type: string
-                  required:
-                    - ts
-                    - valid
-                    - detail
-                    - code
-                    - nonce
-                    - scope
-                data:
-                  $ref: "#/components/schemas/License"
-              required:
-                - meta
-                - data
-      default:
-        $ref: "#/components/responses/Error"
+                          description: The version of a release to validate against.
+      responses:
+        200:
+          description: License validated successfully
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      ts:
+                        type: string
+                        format: date-time
+                      valid:
+                        type: boolean
+                      detail:
+                        type: string
+                      code:
+                        type: string
+                      nonce:
+                        type: integer
+                      scope:
+                        type: object
+                        properties:
+                          product:
+                            type: string
+                          policy:
+                            type: string
+                          fingerprints:
+                            type: array
+                            items:
+                              type: string
+                          fingerprint:
+                            type: string
+                          machine:
+                            type: string
+                          user:
+                            type: string
+                          entitlements:
+                            type: array
+                            items:
+                              type: string
+                          checksum:
+                            type: string
+                          version:
+                            type: string
+                    required:
+                      - ts
+                      - valid
+                      - detail
+                      - code
+                      - nonce
+                      - scope
+                  data:
+                    $ref: "#/components/schemas/License"
+                required:
+                  - meta
+                  - data
+        default:
+          $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/suspend:
     post:
+      tags:
+        - Licenses
       summary: Suspend a license
       description: |
         Action to temporarily suspend (ban) a license. This will cause the license to fail validation until reinistated.
@@ -3411,6 +3509,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/reinstate:
     post:
+      tags:
+        - Licenses
       summary: Reinstate a license
       description: Action to reinstate a suspended license.
       parameters:
@@ -3444,6 +3544,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/renew:
     post:
+      tags:
+        - Licenses
       summary: Renew a license
       description: Action to renew a license. Extends license expiry by the policy's duration.
       parameters:
@@ -3477,6 +3579,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/revoke:
     post:
+      tags:
+        - Licenses
       summary: Revoke a license
       description: |
         Action to revoke (delete) a license. This cannot be undone. This action also immediately deletes any machines
@@ -3512,6 +3616,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/check-out:
     post:
+      tags:
+        - Licenses
       summary: Check-out license
       description: |
         Action to check-out a license. This will generate a snapshot of the license at time of checkout, encoded into a
@@ -3574,6 +3680,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/check-in:
     post:
+      tags:
+        - Licenses
       summary: Check-in a license
       description: |
         Action to check-in a license. Sets the license's `lastCheckIn` to the current time, and the license's
@@ -3607,6 +3715,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/increment-usage:
     post:
+      tags:
+        - Licenses
       summary: Increment license usage
       description: |
         Action to increment a license's `uses` attribute in accordance with its policy's `maxUses` attribute. When the
@@ -3654,6 +3764,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/decrement-usage:
     post:
+      tags:
+        - Licenses
       summary: Decrement license usage
       description: Action to decrement a license's `uses` attribute in accordance with its policy's `maxUses` attribute.
       parameters:
@@ -3698,6 +3810,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/actions/reset-usage:
     post:
+      tags:
+        - Licenses
       summary: Reset license usage
       description: Action to reset a license's `uses` attribute to `0`.
       parameters:
@@ -3729,6 +3843,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/tokens:
     post:
+      tags:
+        - Licenses
       summary: Generate a license token
       description: |
         Create a license token for a license. A license token has permission to activate and deactivate machines for the
@@ -3797,6 +3913,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/entitlements:
     post:
+      tags:
+        - Licenses
       summary: Attach license entitlements
       description: |
         Attach entitlements to a license. This will immediately be taken into effect for all future validations.
@@ -3890,6 +4008,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Licenses
       summary: List license entitlements
       description: |
         Returns a list of entitlements attached to the license. The entitlements are returned sorted by creation date,
@@ -3956,6 +4076,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/policy:
     put:
+      tags:
+        - Licenses
       summary: Change policy
       description: |
         Change a license's policy relationship. This will immediately be taken into effect for all future validations.
@@ -4003,6 +4125,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/user:
     put:
+      tags:
+        - Licenses
       summary: Change user
       description: |
         Change a license's user relationship. This will immediately transfer the license resource to the new user.
@@ -4043,6 +4167,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}/group:
     put:
+      tags:
+        - Licenses
       summary: Change group
       description: |
         Change a license's group relationship. This will immediately transfer the license resource to the new group.
@@ -4084,6 +4210,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/machines:
     post:
+      tags:
+        - Machines
       summary: Activate a machine
       description: Creates, or activates, a new machine resource for a license.
       parameters:
@@ -4198,6 +4326,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Machines
       summary: List all machines
       description: |
         Returns a list of machines. The machines are returned sorted by creation date, with the most recent machines
@@ -4325,6 +4455,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/machines/{machine}:
     get:
+      tags:
+        - Machines
       summary: Retrieve a machine
       description: Retrieves the details of an existing machine.
       parameters:
@@ -4353,6 +4485,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Machines
       summary: Update a machine
       description: |
         Updates the specified machine resource by setting the values of the parameters passed. Any parameters not
@@ -4462,6 +4596,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Machines
       summary: Deactivate a machine
       description: |
         Permanently deletes, or deactivates, a machine. It cannot be undone. This will immediately delete all processes
@@ -4493,6 +4629,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/machines/{machine}/actions/check-out:
     post:
+      tags:
+        - Machines
       summary: Check-out machine
       description: |
         Action to check-out a machine. This will generate a snapshot of the machine at time of checkout, encoded into a
@@ -4563,6 +4701,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/machines/{machine}/actions/ping:
     post:
+      tags:
+        - Machines
       summary: Ping heartbeat
       description: |
         Action to begin or maintain a machine heartbeat monitor. When a machine has not performed a heartbeat ping
@@ -4612,6 +4752,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/machines/{machine}/actions/reset:
     post:
+      tags:
+        - Machines
       summary: Reset heartbeat
       description: Action to reset and stop the machine's heartbeat monitor. This will not deactivate the machine.
       parameters:
@@ -4643,6 +4785,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/machines/{machine}/group:
     put:
+      tags:
+        - Machines
       summary: Change group
       description: |
         Change a machine's group relationship. This will immediately transfer the machine resource to the new group.
@@ -4694,6 +4838,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
   /accounts/{account}/processes:
+    tags:
+      - Processes
     post:
       summary: Spawn a process
       description: Spawns (creates) a new process resource for a machine.
@@ -4772,6 +4918,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     get:
+      tags:
+        - Processes
       summary: List all processes
       description: |
         Returns a list of processes. The processes are returned sorted by creation date, with the most recent processes
@@ -4860,6 +5008,8 @@ paths:
           $ref: "#/components/responses/Error"
   /accounts/{account}/processes/{process}:
     get:
+      tags:
+        - Processes
       summary: Retrieve a process
       description: Retrieves the details of an existing process.
       parameters:
@@ -4888,6 +5038,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     patch:
+      tags:
+        - Processes
       summary: Update a process
       description: |
         Updates the specified process resource by setting the values of the parameters passed. Any parameters not
@@ -4959,6 +5111,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Processes
       summary: Kill a process
       description: Permanently kills (deletes) a process. It cannot be undone.
       parameters:
@@ -4988,6 +5142,8 @@ paths:
           $ref: "#/components/responses/Error"
   /account/{account}/processes/{process}/actions/ping:
     post:
+      tags:
+        - Processes
       summary: Ping
       description: |
         Action to maintain a process heartbeat ping frequency. When a process has not performed a heartbeat ping within
@@ -5042,6 +5198,8 @@ webhooks:
   event:
     post:
       summary: Process an event
+      tags:
+        - Webhooks
       requestBody:
         content:
           application/vnd.api+json:
