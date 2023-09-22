@@ -250,9 +250,10 @@ paths:
                           type: string
                           description: The name of the product.
                         url:
-                          type: string
+                          type:
+                            - string
+                            - null
                           format: uri
-                          nullable: true
                           description: A related URL for the product.
                         distributionStrategy:
                           type: string
@@ -711,19 +712,22 @@ paths:
                           type: string
                           description: The name of the group.
                         maxUsers:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The maximum number of users the group can have, collectively.
                         maxLicenses:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The maximum number of licenses the group can have, collectively.
                         maxMachines:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The maximum number of machines the group can have, collectively.
                         metadata:
                           type: object
@@ -922,13 +926,15 @@ paths:
                           type: string
                           description: The name of the policy.
                         duration:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The duration for the policy in seconds.
                         scheme:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           enum:
                             - ED25519_SIGN
                             - RSA_2048_PKCS1_PSS_SIGN_V2
@@ -996,8 +1002,9 @@ paths:
                             interval to continue to pass validation i.e. if a license misses a check-in, it will be
                             invalidated.
                         checkInInterval:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           enum:
                             - day
                             - week
@@ -1005,9 +1012,10 @@ paths:
                             - year
                           description: The frequency at which a license should check-in.
                         checkInIntervalCount:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The number of intervals (specified in the check-in interval property) between each required
                             check-in.
@@ -1016,30 +1024,34 @@ paths:
                           default: false
                           description: Whether or not to pull license keys from a finite pool of pre-determined keys.
                         maxMachines:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The maximum number of machines a license implementing the policy can have associated with
                             it.
                         maxProcesses:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The maximum number of machine processes a license implementing the policy can have
                             associated with it, also depending on the policy's leasing strategy.
                         maxCores:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The maximum number of machine CPU cores a license implementing the policy can have
                             associated with it.
                         maxUses:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The maximum number of uses a license implementing the policy can have.
                         protected:
                           type: boolean
@@ -1049,9 +1061,10 @@ paths:
                           default: false
                           description: Whether or not the policy requires its machines to maintain a heartbeat.
                         heartbeatDuration:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The heartbeat duration for the policy, in seconds.
                         heartbeatCullStrategy:
                           type: string
@@ -1301,13 +1314,15 @@ paths:
                           type: string
                           description: The name of the policy.
                         duration:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The duration for the policy in seconds.
                         scheme:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           enum:
                             - ED25519_SIGN
                             - RSA_2048_PKCS1_PSS_SIGN_V2
@@ -1366,8 +1381,9 @@ paths:
                             interval to continue to pass validation i.e. if a license misses a check-in, it will be
                             invalidated.
                         checkInInterval:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           enum:
                             - day
                             - week
@@ -1375,37 +1391,42 @@ paths:
                             - year
                           description: The frequency at which a license should check-in.
                         checkInIntervalCount:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The number of intervals (specified in the check-in interval property) between each required
                             check-in.
                         maxMachines:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The maximum number of machines a license implementing the policy can have associated with
                             it.
                         maxProcesses:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The maximum number of machine processes a license implementing the policy can have
                             associated with it, also depending on the policy's leasing strategy.
                         maxCores:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: |
                             The maximum number of machine CPU cores a license implementing the policy can have
                             associated with it.
                         maxUses:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The maximum number of uses a license implementing the policy can have.
                         protected:
                           type: boolean
@@ -1770,8 +1791,9 @@ paths:
                           description: The group the user belongs to.
                           properties:
                             data:
-                              type: object
-                              nullable: true
+                              type:
+                                - object
+                                - null
                               properties:
                                 type:
                                   type: string
@@ -2333,9 +2355,10 @@ paths:
                           type: string
                           description: A unique pre-determined key for the license.
                         expiry:
-                          type: string
+                          type:
+                            - string
+                            - null
                           format: date-time
-                          nullable: true
                           description: When the license will expire.
                         maxMachines:
                           type: integer
@@ -2388,8 +2411,9 @@ paths:
                           description: The group the license belongs to.
                           properties:
                             data:
-                              type: object
-                              nullable: true
+                              type:
+                                - object
+                                - null
                               properties:
                                 type:
                                   type: string
@@ -2406,8 +2430,9 @@ paths:
                           description: The user the license belongs to.
                           properties:
                             data:
-                              type: object
-                              nullable: true
+                              type:
+                                - object
+                                - null
                               properties:
                                 type:
                                   type: string
@@ -2607,29 +2632,34 @@ paths:
                   type: string
                   description: The name of the license.
                 expiry:
-                  type: string
+                  type:
+                    - string
+                    - null
                   format: date-time
-                  nullable: true
                   description: When the license will expire.
                 maxMachines:
-                  type: integer
+                  type:
+                    - integer
+                    - null
                   format: int64
-                  nullable: true
                   description: The maximum number of machines the license can have associated with it.
                 maxProcesses:
-                  type: integer
+                  type:
+                    - integer
+                    - null
                   format: int64
-                  nullable: true
                   description: The maximum number of machine processes the license can have associated with it.
                 maxCores:
-                  type: integer
+                  type:
+                    - integer
+                    - null
                   format: int64
-                  nullable: true
                   description: The maximum number of machine CPU cores the license can have associated with it.
                 maxUses:
-                  type: integer
+                  type:
+                    - integer
+                    - null
                   format: int64
-                  nullable: true
                   description: The maximum number of uses the license is allowed to have.
                 protected:
                   type: boolean
@@ -3593,8 +3623,9 @@ paths:
               type: object
               properties:
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -3644,8 +3675,9 @@ paths:
               type: object
               properties:
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -3699,25 +3731,30 @@ paths:
                           type: string
                           description: The fingerprint of the machine.
                         cores:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The number of CPU cores for the machine.
                         name:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The human-readable name of the machine.
                         ip:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The IP of the machine.
                         hostname:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The hostname of the machine.
                         platform:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The platform of the machine.
                         metadata:
                           type: object
@@ -3749,8 +3786,9 @@ paths:
                           description: The group the machine belongs to.
                           properties:
                             data:
-                              type: object
-                              nullable: trues
+                              type:
+                                - object
+                                - null
                               properties:
                                 type:
                                   type: string
@@ -3938,25 +3976,30 @@ paths:
                       type: object
                       properties:
                         name:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The human-readable name of the machine.
                         ip:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The IP of the machine.
                         hostname:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The hostname of the machine.
                         platform:
-                          type: string
-                          nullable: true
+                          type:
+                            - string
+                            - null
                           description: The platform of the machine.
                         cores:
-                          type: integer
+                          type:
+                            - integer
+                            - null
                           format: int64
-                          nullable: true
                           description: The number of CPU cores for the machine.
                         metadata:
                           type: object
@@ -3986,8 +4029,9 @@ paths:
                           description: The group the machine belongs to.
                           properties:
                             data:
-                              type: object
-                              nullable: trues
+                              type:
+                                - object
+                                - null
                               properties:
                                 type:
                                   type: string
@@ -4209,8 +4253,9 @@ paths:
               type: object
               properties:
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -5052,9 +5097,10 @@ components:
               type: string
               description: The name of the product.
             url:
-              type: string
+              type:
+                - string
+                - null
               format: uri
-              nullable: true
               description: A related URL for the product e.g. the marketing website, company website, etc.
             distributionStrategy:
               type: string
@@ -5288,23 +5334,26 @@ components:
               type: string
               description: The name of the group.
             maxUsers:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of users the group can have, collectively. When `null`, an unlimited number of users
                 may be in the group. Must be a number greater than 0.
             maxLicenses:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of licenses the group can have, collectively. When `null`, an unlimited number of
                 licenses may be in the group. Must be a number greater than 0.
             maxMachines:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of machines the group can have, collectively. When `null`, an unlimited number of
                 machines may be in the group. Must be a number greater than 0.
@@ -5439,8 +5488,9 @@ components:
                 is not enforced i.e. it does not invalidate a license if it's associated with more than 1 machine unless
                 the policy is strict.
             scheme:
-              type: string
-              nullable: true
+              type:
+                - string
+                - null
               enum:
                 - ED25519_SIGN
                 - RSA_2048_PKCS1_PSS_SIGN_V2
@@ -5526,8 +5576,9 @@ components:
                 When enabled, a license that implements the policy will require check-in at a predefined interval to
                 continue to pass validation i.e. if a license misses a check-in, it will be invalidated.
             checkInInterval:
-              type: string
-              nullable: true
+              type:
+                - string
+                - null
               enum:
                 - day
                 - week
@@ -5547,9 +5598,10 @@ components:
                 - **`year`**:
                   Require a license implementing the policy to check-in at least once every year to remain valid.
             checkInIntervalCount:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The number of intervals (specified in the check-in interval property) between each required check-in.
                 For example, `checkInInterval=week` and `checkInIntervalCount=2` requires check-in every 2 weeks. Must
@@ -5561,34 +5613,38 @@ components:
                 invite-only programs such as a private beta, when you need a limited set of licenses, or when you want
                 to define the keys manually. This cannot be changed later on.
             maxMachines:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of machines a license implementing the policy can have associated with it. This is
                 only enforced when the policy is strict. When `null`, an unlimited number of machines may be associated
                 with a license if the policy is floating. Must be a number greater than 0, and must be equal to 1 for
                 non-floating policies.
             maxProcesses:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of machine processes a license implementing the policy can have associated with it,
                 also depending on the policy's leasing strategy. When `null`, an unlimited number of machine processes
                 may be associated with a license. Must be a number greater than 0.
             maxCores:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of machine CPU cores a license implementing the policy can have associated with it.
                 The count is the sum of all cores for the license's machines. This is inherited from the policy. When
                 `null`, a license which implements the policy can have an unlimited number of CPU cores.
             maxUses:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of uses a license implementing the policy can have. Cannot exceed `2,147,483,647`,
                 which is the maximum value of a 4 byte integer. When `null`, a license which implements the policy can
@@ -5609,9 +5665,10 @@ components:
                 when enabled, new machines will automatically have their first heartbeat set upon creation. When
                 disabled, heartbeats are optional.
             heartbeatDuration:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The heartbeat duration for the policy, in seconds. When a machine has an active heartbeat monitor, the
                 machine must send heartbeat pings within this timeframe to remain activated. Must be greater than or
@@ -6189,8 +6246,9 @@ components:
                 links:
                   $ref: "#/components/schemas/RelatedLinks"
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -6280,9 +6338,10 @@ components:
                 key and its signature may be [`base64url` encoded](https://keygen.sh/docs/api/signatures/),
                 depending on the chosen scheme.
             expiry:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: |
                 When the license will expire. Calculated from the license's policy, i.e.
                 `time.now + policy.duration`, at the time of creation and/or renewal.
@@ -6331,31 +6390,35 @@ components:
               type: boolean
               description: Whether or not the policy is strict. This is inherited from the policy.
             maxMachines:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of machines the license can have associated with it. This is by default inherited
                 from the policy, but can be overridden on a per-license basis.
             maxProcesses:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of machine processes the license can have associated with it. This is by default
                 inherited from the policy, but can be overridden on a per-license basis.
             maxCores:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of machine CPU cores the license can have associated with it. The count is the
                 sum of all cores for the license's machines. This is by default inherited from the policy, but can
                 be overridden on a per-license basis.
             maxUses:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The maximum number of uses the license is allowed to have. This is by default inherited from the
                 policy, but can be overridden on a per-license basis.
@@ -6369,25 +6432,29 @@ components:
                 validation i.e. if a license misses a check-in, it will be invalidated. This is inherited from the
                 policy.
             lastValidated:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: When the license was last validated.
             lastCheckOut:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: When the license was last checked-out.
             lastCheckIn:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: |
                 When the license was last checked-in. This is `null` if the policy does not require check-ins.
             nextCheckIn:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: |
                 The time at which the license is required to check-in by. This is `null` if the policy does not
                 require check-ins.
@@ -6499,8 +6566,9 @@ components:
                 links:
                   $ref: "#/components/schemas/RelatedLinks"
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -6520,8 +6588,9 @@ components:
                 links:
                   $ref: "#/components/schemas/RelatedLinks"
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -6746,25 +6815,30 @@ components:
               type: string
               description: The fingerprint of the machine.
             cores:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: The number of CPU cores for the machine.
             name:
-              type: string
-              nullable: true
+              type:
+                - string
+                - null
               description: The human-readable name of the machine.
             ip:
-              type: string
-              nullable: true
+              type:
+                - string
+                - null
               description: The IP of the machine.
             hostname:
-              type: string
-              nullable: true
+              type:
+                - string
+                - null
               description: The hostname of the machine.
             platform:
-              type: string
-              nullable: true
+              type:
+                - string
+                - null
               description: The platform of the machine.
             maxProcesses:
               type: integer
@@ -6788,19 +6862,22 @@ components:
               format: int64
               description: The policy's heartbeat duration.
             lastHeartbeat:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: When the machine last sent a heartbeat ping.
             nextHeartbeat:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: The time at which the machine is required to send a heartbeat ping by.
             lastCheckOut:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: When the machine was last checked-out.
             metadata:
               type: object
@@ -6901,8 +6978,9 @@ components:
                 links:
                   $ref: "#/components/schemas/RelatedLinks"
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -6922,8 +7000,9 @@ components:
                 links:
                   $ref: "#/components/schemas/RelatedLinks"
                 data:
-                  type: object
-                  nullable: true
+                  type:
+                    - object
+                    - null
                   properties:
                     type:
                       type: string
@@ -7066,23 +7145,26 @@ components:
               description: |
                 The status of the process's heartbeat. One of: `ALIVE`, `DEAD`, or `RESURRECTED`.
             lastHeartbeat:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: |
                 When the process last sent a heartbeat ping. The initial value of this attribute will be equal to
                 the process's created timestamp.
             nextHeartbeat:
-              type: string
+              type:
+                - string
+                - null
               format: date-time
-              nullable: true
               description: |
                 The time at which the process is required to send its next heartbeat ping by. This attribute is
                 calculated using the license policy's heartbeat duration.
             interval:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: |
                 The heartbeat interval for the process, in seconds. The process must send heartbeat pings within
                 this timeframe to remain alive. This is inherited from the license's policy.
@@ -7332,13 +7414,15 @@ components:
                 The current status of the event. Possible statuses are: `DELIVERING`, `DELIVERED`, `FAILING`, and
                 `FAILED`.
             lastResponseCode:
-              type: integer
+              type:
+                - integer
+                - null
               format: int64
-              nullable: true
               description: The last HTTP response code that your webhook endpoint sent in response to the webhook.
             lastResponseBody:
-              type: string
-              nullable: true
+              type:
+                - string
+                - null
               description: The last HTTP response body that your webhook endpoint sent in response to the webhook.
             created:
               type: string
