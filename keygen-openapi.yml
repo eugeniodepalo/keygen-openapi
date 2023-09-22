@@ -4945,7 +4945,8 @@ components:
       type: object
       summary: The token object
       description: |
-        **Keygen authenticates your API requests using tokens.**\
+        **Keygen authenticates your API requests using tokens.**
+
         Below you will find the various attributes for the token resource, as well as the token resource's
         relationships. The actual `token` string is hashed before being stored in our databases, thus is only available
         directly after generating/regenerating a token. Tokens with an expiry will automatically be deleted 90 days
@@ -5751,7 +5752,7 @@ components:
                   another policy or license.
                 - **`UNIQUE_PER_POLICY`**:
                   Machine fingerprints must be unique across all licenses for the policy. This will block all duplicate
-                  fingerprints of the same policy, regardless of whether or not the fingerprint belongs to another\
+                  fingerprints of the same policy, regardless of whether or not the fingerprint belongs to another
                   license.
                 - **`UNIQUE_PER_LICENSE`**:
                   Machine fingerprints must be unique to the license. This will block all duplicate fingerprints for
