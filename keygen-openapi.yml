@@ -84,7 +84,7 @@ paths:
                   required:
                     - type
       responses:
-        201:
+        "201":
           description: Token generated successfully
           content:
             application/vnd.api+json:
@@ -167,7 +167,7 @@ paths:
               - type
               - id
       responses:
-        200:
+        "200":
           description: Tokens retrieved successfully
           content:
             application/vnd.api+json:
@@ -205,7 +205,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Token retrieved successfully
           content:
             application/vnd.api+json:
@@ -239,7 +239,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Token regenerated successfully
           content:
             application/vnd.api+json:
@@ -273,7 +273,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: Token revoked successfully
         default:
           $ref: "#/components/responses/Error"
@@ -339,7 +339,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: Product created successfully
           content:
             application/vnd.api+json:
@@ -399,7 +399,7 @@ paths:
                 minimum: 1
                 description: The page number.
       responses:
-        200:
+        "200":
           description: Products retrieved successfully
           content:
             application/vnd.api+json:
@@ -437,7 +437,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Product retrieved successfully
           content:
             application/vnd.api+json:
@@ -512,7 +512,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: Product updated successfully
           content:
             application/vnd.api+json:
@@ -546,7 +546,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: Product deleted successfully
         default:
           $ref: "#/components/responses/Error"
@@ -594,7 +594,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: Product token generated successfully
           content:
             application/vnd.api+json:
@@ -655,7 +655,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: Entitlement created successfully
           content:
             application/vnd.api+json:
@@ -716,7 +716,7 @@ paths:
                 minimum: 1
                 description: The page number.
       responses:
-        200:
+        "200":
           description: Entitlements retrieved successfully
           content:
             application/vnd.api+json:
@@ -752,7 +752,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Entitlement retrieved successfully
           content:
             application/vnd.api+json:
@@ -813,7 +813,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: Entitlement updated successfully
           content:
             application/vnd.api+json:
@@ -847,7 +847,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: Entitlement deleted successfully
         default:
           $ref: "#/components/responses/Error"
@@ -910,7 +910,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: Group created successfully
           content:
             application/vnd.api+json:
@@ -971,7 +971,7 @@ paths:
                 minimum: 1
                 description: The page number.
       responses:
-        200:
+        "200":
           description: Groups retrieved successfully
           content:
             application/vnd.api+json:
@@ -1007,7 +1007,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Group retrieved successfully
           content:
             application/vnd.api+json:
@@ -1077,7 +1077,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: Group updated successfully
           content:
             application/vnd.api+json:
@@ -1111,7 +1111,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: Group deleted successfully
         default:
           $ref: "#/components/responses/Error"
@@ -1414,7 +1414,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: Policy created successfully
           content:
             application/vnd.api+json:
@@ -1481,7 +1481,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Policies retrieved successfully
           content:
             application/vnd.api+json:
@@ -1517,7 +1517,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Policy retrieved successfully
           content:
             application/vnd.api+json:
@@ -1784,7 +1784,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: Policy updated successfully
           content:
             application/vnd.api+json:
@@ -1818,7 +1818,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: Policy deleted successfully
         default:
           $ref: "#/components/responses/Error"
@@ -1844,7 +1844,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: Policy pool key popped successfully
         default:
           $ref: "#/components/responses/Error"
@@ -1897,7 +1897,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: Policy entitlements attached successfully
           content:
             application/vnd.api+json:
@@ -1954,7 +1954,7 @@ paths:
               required:
                 - data
       responses:
-        204:
+        "204":
           description: Policy entitlements detached successfully
         default:
           $ref: "#/components/responses/Error"
@@ -2011,7 +2011,7 @@ paths:
                 minimum: 1
                 description: The page number.
       responses:
-        200:
+        "200":
           description: Policy entitlements retrieved successfully
           content:
             application/vnd.api+json:
@@ -2119,7 +2119,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: User created successfully
           content:
             application/vnd.api+json:
@@ -2232,7 +2232,7 @@ paths:
             type: object
             additionalProperties: true
       responses:
-        200:
+        "200":
           description: Users retrieved successfully
           content:
             application/vnd.api+json:
@@ -2269,7 +2269,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: User retrieved successfully
           content:
             application/vnd.api+json:
@@ -2367,7 +2367,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: User updated successfully
           content:
             application/vnd.api+json:
@@ -2401,7 +2401,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: User deleted successfully
         default:
           $ref: "#/components/responses/Error"
@@ -2449,7 +2449,7 @@ paths:
               required:
                 - meta
       responses:
-        200:
+        "200":
           description: Password updated successfully
           content:
             application/vnd.api+json:
@@ -2512,7 +2512,7 @@ paths:
               required:
                 - meta
       responses:
-        200:
+        "200":
           description: Password reset successfully
           content:
             application/vnd.api+json:
@@ -2547,7 +2547,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: User banned successfully
           content:
             application/vnd.api+json:
@@ -2580,7 +2580,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: User unbanned successfully
           content:
             application/vnd.api+json:
@@ -2643,7 +2643,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: User token generated successfully
           content:
             application/vnd.api+json:
@@ -2698,7 +2698,7 @@ paths:
               required:
                 - data
       responses:
-        200:
+        "200":
           description: Group changed successfully
           content:
             application/vnd.api+json:
@@ -2843,7 +2843,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: License created successfully
           content:
             application/vnd.api+json:
@@ -2984,7 +2984,7 @@ paths:
             type: object
             additionalProperties: true
       responses:
-        200:
+        "200":
           description: Licenses retrieved successfully
           content:
             application/vnd.api+json:
@@ -3022,7 +3022,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: License retrieved successfully
           content:
             application/vnd.api+json:
@@ -3100,7 +3100,7 @@ paths:
                   description: Object containing license metadata.
                   additionalProperties: true
       responses:
-        200:
+        "200":
           description: License updated successfully
           content:
             application/vnd.api+json:
@@ -3134,7 +3134,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: License deleted successfully
         default:
           $ref: "#/components/responses/Error"
@@ -3273,7 +3273,7 @@ paths:
                           type: string
                           description: The version of a release to validate against.
       responses:
-        200:
+        "200":
           description: License validated successfully
           content:
             application/vnd.api+json:
@@ -3410,7 +3410,7 @@ paths:
                           type: string
                           description: The version of a release to validate against.
       responses:
-        200:
+        "200":
           description: License validated successfully
           content:
             application/vnd.api+json:
@@ -3494,7 +3494,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: License suspended successfully
           content:
             application/vnd.api+json:
@@ -3529,7 +3529,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: License reinstated successfully
           content:
             application/vnd.api+json:
@@ -3564,7 +3564,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: License renewed successfully
           content:
             application/vnd.api+json:
@@ -3601,7 +3601,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: License revoked successfully
           content:
             application/vnd.api+json:
@@ -3665,7 +3665,7 @@ paths:
                 - user
                 - group
       responses:
-        200:
+        "200":
           description: License checked out successfully
           content:
             application/vnd.api+json:
@@ -3700,7 +3700,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: License checked in successfully
           content:
             application/vnd.api+json:
@@ -3749,7 +3749,7 @@ paths:
                       format: int64
                       default: 1
       responses:
-        200:
+        "200":
           description: License usage incremented successfully
           content:
             application/vnd.api+json:
@@ -3795,7 +3795,7 @@ paths:
                       format: int64
                       default: 1
       responses:
-        200:
+        "200":
           description: License usage decremented successfully
           content:
             application/vnd.api+json:
@@ -3828,7 +3828,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: License usage reset successfully
           content:
             application/vnd.api+json:
@@ -3898,7 +3898,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: License token generated successfully
           content:
             application/vnd.api+json:
@@ -3957,7 +3957,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: License entitlements attached successfully
           content:
             application/vnd.api+json:
@@ -3992,7 +3992,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: License entitlements detached successfully
           content:
             application/vnd.api+json:
@@ -4059,7 +4059,7 @@ paths:
                 minimum: 1
                 description: The page number.
       responses:
-        200:
+        "200":
           description: License entitlements retreived successfully
           content:
             application/vnd.api+json:
@@ -4110,7 +4110,7 @@ paths:
               required:
                 - data
       responses:
-        200:
+        "200":
           description: Policy changed successfully
           content:
             application/vnd.api+json:
@@ -4152,7 +4152,7 @@ paths:
               required:
                 - data
       responses:
-        200:
+        "200":
           description: User changed successfully
           content:
             application/vnd.api+json:
@@ -4195,7 +4195,7 @@ paths:
               required:
                 - data
       responses:
-        200:
+        "200":
           description: Group changed successfully
           content:
             application/vnd.api+json:
@@ -4312,7 +4312,7 @@ paths:
               required:
                 - data
       responses:
-        200:
+        "200":
           description: Machine activated successfully
           content:
             application/vnd.api+json:
@@ -4435,7 +4435,7 @@ paths:
             type: object
             additionalProperties: true
       responses:
-        200:
+        "200":
           description: Machines retrieved successfully
           content:
             application/vnd.api+json:
@@ -4471,7 +4471,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Machine retrieved successfully
           content:
             application/vnd.api+json:
@@ -4582,7 +4582,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: Machine updated successfully
           content:
             application/vnd.api+json:
@@ -4614,7 +4614,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Machine deactivated successfully
           content:
             application/vnd.api+json:
@@ -4686,7 +4686,7 @@ paths:
             type: boolean
             default: false
       responses:
-        200:
+        "200":
           description: Machine checked out successfully
           content:
             application/vnd.api+json:
@@ -4737,7 +4737,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: Heartbeat pinged successfully
           content:
             application/vnd.api+json:
@@ -4770,7 +4770,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: Heartbeat reset successfully
           content:
             application/vnd.api+json:
@@ -4824,7 +4824,7 @@ paths:
               required:
                 - data
       responses:
-        200:
+        "200":
           description: Group changed successfully
           content:
             application/vnd.api+json:
@@ -4904,7 +4904,7 @@ paths:
               required:
                 - data
       responses:
-        201:
+        "201":
           description: Process spawned successfully
           content:
             application/vnd.api+json:
@@ -4988,7 +4988,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Processes retrieved successfully
           content:
             application/vnd.api+json:
@@ -5024,7 +5024,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Process retrieved successfully
           content:
             application/vnd.api+json:
@@ -5097,7 +5097,7 @@ paths:
                   required:
                     - type
       responses:
-        200:
+        "200":
           description: Process updated successfully
           content:
             application/vnd.api+json:
@@ -5127,7 +5127,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Process killed successfully
           content:
             application/vnd.api+json:
@@ -5181,7 +5181,7 @@ paths:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: Ping successful
           content:
             application/vnd.api+json:
@@ -5210,7 +5210,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Profile retrieved successfully
           content:
             application/vnd.api+json:
@@ -5279,7 +5279,7 @@ paths:
               required:
                 - meta
       responses:
-        202:
+        "202":
           description: Password reset request accepted
         default:
           $ref: "#/components/responses/Error"
@@ -5320,7 +5320,7 @@ paths:
                       type: string
                       description: When the user has an existing second factor, the OTP code of the second factor.
       responses:
-        201:
+        "201":
           description: Second factor added successfully
           content:
             application/vnd.api+json:
@@ -5354,7 +5354,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Second factors retrieved successfully
           content:
             application/vnd.api+json:
@@ -5395,7 +5395,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        "200":
           description: Second factor retrieved successfully
           content:
             application/vnd.api+json:
@@ -5462,7 +5462,7 @@ paths:
               required:
                 - meta
       responses:
-        200:
+        "200":
           description: Second factor updated successfully
           content:
             application/vnd.api+json:
@@ -5500,7 +5500,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        "204":
           description: Second factor deleted successfully
         default:
           $ref: "#/components/responses/Error"
@@ -5523,7 +5523,7 @@ webhooks:
             type: string
           required: true
       responses:
-        200:
+        "200":
           description: Event processed successfully
 components:
   responses:
