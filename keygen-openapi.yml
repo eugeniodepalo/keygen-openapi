@@ -252,7 +252,7 @@ paths:
                         url:
                           type:
                             - string
-                            - null
+                            - "null"
                           format: uri
                           description: A related URL for the product.
                         distributionStrategy:
@@ -714,19 +714,19 @@ paths:
                         maxUsers:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The maximum number of users the group can have, collectively.
                         maxLicenses:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The maximum number of licenses the group can have, collectively.
                         maxMachines:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The maximum number of machines the group can have, collectively.
                         metadata:
@@ -928,13 +928,13 @@ paths:
                         duration:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The duration for the policy in seconds.
                         scheme:
                           type:
                             - string
-                            - null
+                            - "null"
                           enum:
                             - ED25519_SIGN
                             - RSA_2048_PKCS1_PSS_SIGN_V2
@@ -1004,7 +1004,7 @@ paths:
                         checkInInterval:
                           type:
                             - string
-                            - null
+                            - "null"
                           enum:
                             - day
                             - week
@@ -1014,7 +1014,7 @@ paths:
                         checkInIntervalCount:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The number of intervals (specified in the check-in interval property) between each required
@@ -1026,7 +1026,7 @@ paths:
                         maxMachines:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The maximum number of machines a license implementing the policy can have associated with
@@ -1034,7 +1034,7 @@ paths:
                         maxProcesses:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The maximum number of machine processes a license implementing the policy can have
@@ -1042,7 +1042,7 @@ paths:
                         maxCores:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The maximum number of machine CPU cores a license implementing the policy can have
@@ -1050,7 +1050,7 @@ paths:
                         maxUses:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The maximum number of uses a license implementing the policy can have.
                         protected:
@@ -1063,7 +1063,7 @@ paths:
                         heartbeatDuration:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The heartbeat duration for the policy, in seconds.
                         heartbeatCullStrategy:
@@ -1316,13 +1316,13 @@ paths:
                         duration:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The duration for the policy in seconds.
                         scheme:
                           type:
                             - string
-                            - null
+                            - "null"
                           enum:
                             - ED25519_SIGN
                             - RSA_2048_PKCS1_PSS_SIGN_V2
@@ -1383,7 +1383,7 @@ paths:
                         checkInInterval:
                           type:
                             - string
-                            - null
+                            - "null"
                           enum:
                             - day
                             - week
@@ -1393,7 +1393,7 @@ paths:
                         checkInIntervalCount:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The number of intervals (specified in the check-in interval property) between each required
@@ -1401,7 +1401,7 @@ paths:
                         maxMachines:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The maximum number of machines a license implementing the policy can have associated with
@@ -1409,7 +1409,7 @@ paths:
                         maxProcesses:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The maximum number of machine processes a license implementing the policy can have
@@ -1417,7 +1417,7 @@ paths:
                         maxCores:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: |
                             The maximum number of machine CPU cores a license implementing the policy can have
@@ -1425,7 +1425,7 @@ paths:
                         maxUses:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The maximum number of uses a license implementing the policy can have.
                         protected:
@@ -1793,7 +1793,7 @@ paths:
                             data:
                               type:
                                 - object
-                                - null
+                                - "null"
                               properties:
                                 type:
                                   type: string
@@ -2357,7 +2357,7 @@ paths:
                         expiry:
                           type:
                             - string
-                            - null
+                            - "null"
                           format: date-time
                           description: When the license will expire.
                         maxMachines:
@@ -2413,7 +2413,7 @@ paths:
                             data:
                               type:
                                 - object
-                                - null
+                                - "null"
                               properties:
                                 type:
                                   type: string
@@ -2432,7 +2432,7 @@ paths:
                             data:
                               type:
                                 - object
-                                - null
+                                - "null"
                               properties:
                                 type:
                                   type: string
@@ -2634,31 +2634,31 @@ paths:
                 expiry:
                   type:
                     - string
-                    - null
+                    - "null"
                   format: date-time
                   description: When the license will expire.
                 maxMachines:
                   type:
                     - integer
-                    - null
+                    - "null"
                   format: int64
                   description: The maximum number of machines the license can have associated with it.
                 maxProcesses:
                   type:
                     - integer
-                    - null
+                    - "null"
                   format: int64
                   description: The maximum number of machine processes the license can have associated with it.
                 maxCores:
                   type:
                     - integer
-                    - null
+                    - "null"
                   format: int64
                   description: The maximum number of machine CPU cores the license can have associated with it.
                 maxUses:
                   type:
                     - integer
-                    - null
+                    - "null"
                   format: int64
                   description: The maximum number of uses the license is allowed to have.
                 protected:
@@ -3625,7 +3625,7 @@ paths:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -3677,7 +3677,7 @@ paths:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -3733,28 +3733,28 @@ paths:
                         cores:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The number of CPU cores for the machine.
                         name:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The human-readable name of the machine.
                         ip:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The IP of the machine.
                         hostname:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The hostname of the machine.
                         platform:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The platform of the machine.
                         metadata:
                           type: object
@@ -3788,7 +3788,7 @@ paths:
                             data:
                               type:
                                 - object
-                                - null
+                                - "null"
                               properties:
                                 type:
                                   type: string
@@ -3978,27 +3978,27 @@ paths:
                         name:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The human-readable name of the machine.
                         ip:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The IP of the machine.
                         hostname:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The hostname of the machine.
                         platform:
                           type:
                             - string
-                            - null
+                            - "null"
                           description: The platform of the machine.
                         cores:
                           type:
                             - integer
-                            - null
+                            - "null"
                           format: int64
                           description: The number of CPU cores for the machine.
                         metadata:
@@ -4031,7 +4031,7 @@ paths:
                             data:
                               type:
                                 - object
-                                - null
+                                - "null"
                               properties:
                                 type:
                                   type: string
@@ -4255,7 +4255,7 @@ paths:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -5099,7 +5099,7 @@ components:
             url:
               type:
                 - string
-                - null
+                - "null"
               format: uri
               description: A related URL for the product e.g. the marketing website, company website, etc.
             distributionStrategy:
@@ -5336,7 +5336,7 @@ components:
             maxUsers:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of users the group can have, collectively. When `null`, an unlimited number of users
@@ -5344,7 +5344,7 @@ components:
             maxLicenses:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of licenses the group can have, collectively. When `null`, an unlimited number of
@@ -5352,7 +5352,7 @@ components:
             maxMachines:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of machines the group can have, collectively. When `null`, an unlimited number of
@@ -5490,7 +5490,7 @@ components:
             scheme:
               type:
                 - string
-                - null
+                - "null"
               enum:
                 - ED25519_SIGN
                 - RSA_2048_PKCS1_PSS_SIGN_V2
@@ -5578,7 +5578,7 @@ components:
             checkInInterval:
               type:
                 - string
-                - null
+                - "null"
               enum:
                 - day
                 - week
@@ -5600,7 +5600,7 @@ components:
             checkInIntervalCount:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The number of intervals (specified in the check-in interval property) between each required check-in.
@@ -5615,7 +5615,7 @@ components:
             maxMachines:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of machines a license implementing the policy can have associated with it. This is
@@ -5625,7 +5625,7 @@ components:
             maxProcesses:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of machine processes a license implementing the policy can have associated with it,
@@ -5634,7 +5634,7 @@ components:
             maxCores:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of machine CPU cores a license implementing the policy can have associated with it.
@@ -5643,7 +5643,7 @@ components:
             maxUses:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of uses a license implementing the policy can have. Cannot exceed `2,147,483,647`,
@@ -5667,7 +5667,7 @@ components:
             heartbeatDuration:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The heartbeat duration for the policy, in seconds. When a machine has an active heartbeat monitor, the
@@ -6248,7 +6248,7 @@ components:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -6340,7 +6340,7 @@ components:
             expiry:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: |
                 When the license will expire. Calculated from the license's policy, i.e.
@@ -6392,7 +6392,7 @@ components:
             maxMachines:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of machines the license can have associated with it. This is by default inherited
@@ -6400,7 +6400,7 @@ components:
             maxProcesses:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of machine processes the license can have associated with it. This is by default
@@ -6408,7 +6408,7 @@ components:
             maxCores:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of machine CPU cores the license can have associated with it. The count is the
@@ -6417,7 +6417,7 @@ components:
             maxUses:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The maximum number of uses the license is allowed to have. This is by default inherited from the
@@ -6434,26 +6434,26 @@ components:
             lastValidated:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: When the license was last validated.
             lastCheckOut:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: When the license was last checked-out.
             lastCheckIn:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: |
                 When the license was last checked-in. This is `null` if the policy does not require check-ins.
             nextCheckIn:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: |
                 The time at which the license is required to check-in by. This is `null` if the policy does not
@@ -6568,7 +6568,7 @@ components:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -6590,7 +6590,7 @@ components:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -6817,28 +6817,28 @@ components:
             cores:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: The number of CPU cores for the machine.
             name:
               type:
                 - string
-                - null
+                - "null"
               description: The human-readable name of the machine.
             ip:
               type:
                 - string
-                - null
+                - "null"
               description: The IP of the machine.
             hostname:
               type:
                 - string
-                - null
+                - "null"
               description: The hostname of the machine.
             platform:
               type:
                 - string
-                - null
+                - "null"
               description: The platform of the machine.
             maxProcesses:
               type: integer
@@ -6864,19 +6864,19 @@ components:
             lastHeartbeat:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: When the machine last sent a heartbeat ping.
             nextHeartbeat:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: The time at which the machine is required to send a heartbeat ping by.
             lastCheckOut:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: When the machine was last checked-out.
             metadata:
@@ -6980,7 +6980,7 @@ components:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -7002,7 +7002,7 @@ components:
                 data:
                   type:
                     - object
-                    - null
+                    - "null"
                   properties:
                     type:
                       type: string
@@ -7147,7 +7147,7 @@ components:
             lastHeartbeat:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: |
                 When the process last sent a heartbeat ping. The initial value of this attribute will be equal to
@@ -7155,7 +7155,7 @@ components:
             nextHeartbeat:
               type:
                 - string
-                - null
+                - "null"
               format: date-time
               description: |
                 The time at which the process is required to send its next heartbeat ping by. This attribute is
@@ -7163,7 +7163,7 @@ components:
             interval:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: |
                 The heartbeat interval for the process, in seconds. The process must send heartbeat pings within
@@ -7416,13 +7416,13 @@ components:
             lastResponseCode:
               type:
                 - integer
-                - null
+                - "null"
               format: int64
               description: The last HTTP response code that your webhook endpoint sent in response to the webhook.
             lastResponseBody:
               type:
                 - string
-                - null
+                - "null"
               description: The last HTTP response body that your webhook endpoint sent in response to the webhook.
             created:
               type: string
