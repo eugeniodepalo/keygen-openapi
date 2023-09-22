@@ -6154,6 +6154,8 @@ components:
         Another example would be configuring a yearly software license that once expired, still functions normally, but
         is disallowed release upgrades after expiration. This is something you can accomplish using policies.
       properties:
+        id:
+          type: string
         type:
           type: string
           enum: [policies]
@@ -6730,6 +6732,14 @@ components:
             - pool
             - licenses
             - entitlements
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              format: uri
+          required:
+            - self
       required:
         - id
         - type
@@ -6870,6 +6880,8 @@ components:
         Below you will find the various attributes for the user resource, as well as the user resource's relationships.
         To modify a relationship, you will need to use the canonical link for the given resource.
       properties:
+        id:
+          type: string
         type:
           type: string
           enum: [users]
@@ -7081,6 +7093,7 @@ components:
           required:
             - self
       required:
+        - id
         - type
         - attributes
         - relationships
@@ -7092,6 +7105,11 @@ components:
         Below you will find the various attributes for the license resource, as well as the license resource's
         relationships. A license is an implementation of a product's policy.
       properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [licenses]
         attributes:
           type: object
           properties:
@@ -7424,6 +7442,8 @@ components:
           required:
             - self
       required:
+        - id
+        - type
         - attributes
         - relationships
         - links
@@ -7640,275 +7660,273 @@ components:
         Below you will find the various attributes for the machine resource, as well as the machine resource's
         relationships. Machines can be used to track and manage where your users are allowed to use your product.
       properties:
-        data:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [machines]
+        attributes:
           type: object
           properties:
-            type:
+            fingerprint:
               type: string
-              enum: [machines]
-            attributes:
+              description: The fingerprint of the machine.
+            cores:
+              type: integer
+              format: int64
+              nullable: true
+              description: The number of CPU cores for the machine.
+            name:
+              type: string
+              nullable: true
+              description: The human-readable name of the machine.
+            ip:
+              type: string
+              nullable: true
+              description: The IP of the machine.
+            hostname:
+              type: string
+              nullable: true
+              description: The hostname of the machine.
+            platform:
+              type: string
+              nullable: true
+              description: The platform of the machine.
+            maxProcesses:
+              type: integer
+              format: int64
+              description: The maximum number of processes the machine can have associated with it.
+            requireHeartbeat:
+              type: boolean
+              description: |
+                Whether or not the machine requires heartbeat pings, i.e. the policy requires heartbeats, or the
+                machine has an active heartbeat monitor.
+            heartbeatStatus:
+              type: string
+              enum:
+                - NOT_STARTED
+                - ALIVE
+                - DEAD
+                - RESURRECTED
+              description: The status of the machine's heartbeat.
+            heartbeatDuration:
+              type: integer
+              format: int64
+              description: The policy's heartbeat duration.
+            lastHeartbeat:
+              type: string
+              format: date-time
+              nullable: true
+              description: When the machine last sent a heartbeat ping.
+            nextHeartbeat:
+              type: string
+              format: date-time
+              nullable: true
+              description: The time at which the machine is required to send a heartbeat ping by.
+            lastCheckOut:
+              type: string
+              format: date-time
+              nullable: true
+              description: When the machine was last checked-out.
+            metadata:
               type: object
-              properties:
-                fingerprint:
-                  type: string
-                  description: The fingerprint of the machine.
-                cores:
-                  type: integer
-                  format: int64
-                  nullable: true
-                  description: The number of CPU cores for the machine.
-                name:
-                  type: string
-                  nullable: true
-                  description: The human-readable name of the machine.
-                ip:
-                  type: string
-                  nullable: true
-                  description: The IP of the machine.
-                hostname:
-                  type: string
-                  nullable: true
-                  description: The hostname of the machine.
-                platform:
-                  type: string
-                  nullable: true
-                  description: The platform of the machine.
-                maxProcesses:
-                  type: integer
-                  format: int64
-                  description: The maximum number of processes the machine can have associated with it.
-                requireHeartbeat:
-                  type: boolean
-                  description: |
-                    Whether or not the machine requires heartbeat pings, i.e. the policy requires heartbeats, or the
-                    machine has an active heartbeat monitor.
-                heartbeatStatus:
-                  type: string
-                  enum:
-                    - NOT_STARTED
-                    - ALIVE
-                    - DEAD
-                    - RESURRECTED
-                  description: The status of the machine's heartbeat.
-                heartbeatDuration:
-                  type: integer
-                  format: int64
-                  description: The policy's heartbeat duration.
-                lastHeartbeat:
-                  type: string
-                  format: date-time
-                  nullable: true
-                  description: When the machine last sent a heartbeat ping.
-                nextHeartbeat:
-                  type: string
-                  format: date-time
-                  nullable: true
-                  description: The time at which the machine is required to send a heartbeat ping by.
-                lastCheckOut:
-                  type: string
-                  format: date-time
-                  nullable: true
-                  description: When the machine was last checked-out.
-                metadata:
-                  type: object
-                  description: Object containing machine metadata.
-                  additionalProperties: true
-                created:
-                  type: string
-                  format: date-time
-                  description: When the machine was created.
-                updated:
-                  type: string
-                  format: date-time
-                  description: When the machine was last updated.
-              required:
-                - fingerprint
-                - cores
-                - name
-                - ip
-                - hostname
-                - platform
-                - maxProcesses
-                - requireHeartbeat
-                - heartbeatStatus
-                - heartbeatDuration
-                - lastHeartbeat
-                - nextHeartbeat
-                - lastCheckOut
-                - metadata
-                - created
-                - updated
-            relationships:
-              type: object
-              properties:
-                account:
-                  type: object
-                  description: The account that the machine belongs to.
-                  properties:
-                    links:
-                      type: object
-                      properties:
-                        related:
-                          type: string
-                          format: uri
-                      required:
-                        - related
-                    data:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum: [accounts]
-                        id:
-                          type: string
-                      required:
-                        - type
-                        - id
-                  required:
-                    - data
-                    - links
-                product:
-                  type: object
-                  description: The product that the machine is associated with.
-                  properties:
-                    links:
-                      type: object
-                      properties:
-                        related:
-                          type: string
-                          format: uri
-                      required:
-                        - related
-                    data:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum: [products]
-                        id:
-                          type: string
-                      required:
-                        - type
-                        - id
-                  required:
-                    - data
-                    - links
-                license:
-                  type: object
-                  description: The license that the machine is associated with.
-                  properties:
-                    links:
-                      type: object
-                      properties:
-                        related:
-                          type: string
-                          format: uri
-                      required:
-                        - related
-                    data:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum: [licenses]
-                        id:
-                          type: string
-                      required:
-                        - type
-                        - id
-                  required:
-                    - data
-                    - links
-                group:
-                  type: object
-                  description: The group the machine belongs to.
-                  properties:
-                    links:
-                      type: object
-                      properties:
-                        related:
-                          type: string
-                          format: uri
-                      required:
-                        - related
-                    data:
-                      type: object
-                      nullable: true
-                      properties:
-                        type:
-                          type: string
-                          enum: [groups]
-                        id:
-                          type: string
-                      required:
-                        - type
-                        - id
-                  required:
-                    - data
-                    - links
-                user:
-                  type: object
-                  description: The user that owns the machine.
-                  properties:
-                    links:
-                      type: object
-                      properties:
-                        related:
-                          type: string
-                          format: uri
-                      required:
-                        - related
-                    data:
-                      type: object
-                      nullable: true
-                      properties:
-                        type:
-                          type: string
-                          enum: [users]
-                        id:
-                          type: string
-                      required:
-                        - type
-                        - id
-                  required:
-                    - data
-                    - links
-                processes:
-                  type: object
-                  description: The processes for the machine.
-                  properties:
-                    links:
-                      type: object
-                      properties:
-                        related:
-                          type: string
-                          format: uri
-                      required:
-                        - related
-                  required:
-                    - links
-              required:
-                - account
-                - product
-                - license
-                - group
-                - user
-                - processes
-            links:
-              type: object
-              properties:
-                self:
-                  type: string
-                  format: uri
-              required:
-                - self
+              description: Object containing machine metadata.
+              additionalProperties: true
+            created:
+              type: string
+              format: date-time
+              description: When the machine was created.
+            updated:
+              type: string
+              format: date-time
+              description: When the machine was last updated.
           required:
-            - type
-            - attributes
-            - relationships
-            - links
+            - fingerprint
+            - cores
+            - name
+            - ip
+            - hostname
+            - platform
+            - maxProcesses
+            - requireHeartbeat
+            - heartbeatStatus
+            - heartbeatDuration
+            - lastHeartbeat
+            - nextHeartbeat
+            - lastCheckOut
+            - metadata
+            - created
+            - updated
+        relationships:
+          type: object
+          properties:
+            account:
+              type: object
+              description: The account that the machine belongs to.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [accounts]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            product:
+              type: object
+              description: The product that the machine is associated with.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [products]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            license:
+              type: object
+              description: The license that the machine is associated with.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [licenses]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            group:
+              type: object
+              description: The group the machine belongs to.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  nullable: true
+                  properties:
+                    type:
+                      type: string
+                      enum: [groups]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            user:
+              type: object
+              description: The user that owns the machine.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+                data:
+                  type: object
+                  nullable: true
+                  properties:
+                    type:
+                      type: string
+                      enum: [users]
+                    id:
+                      type: string
+                  required:
+                    - type
+                    - id
+              required:
+                - data
+                - links
+            processes:
+              type: object
+              description: The processes for the machine.
+              properties:
+                links:
+                  type: object
+                  properties:
+                    related:
+                      type: string
+                      format: uri
+                  required:
+                    - related
+              required:
+                - links
+          required:
+            - account
+            - product
+            - license
+            - group
+            - user
+            - processes
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              format: uri
+          required:
+            - self
       required:
-        - data
+        - id
+        - type
+        - attributes
+        - relationships
+        - links
     MachineFile:
       summary: The machine file object
       type: object
@@ -8005,6 +8023,8 @@ components:
         Utilizing processes, you can manage application concurrency across machines. For example, you could restrict the
         number of application instances allowed per-machine.
       properties:
+        id:
+          type: string
         type:
           type: string
           enum: [processes]
@@ -8188,6 +8208,7 @@ components:
           required:
             - self
       required:
+        - id
         - type
         - attributes
         - relationships
@@ -8200,6 +8221,8 @@ components:
         quickly, but sometimes there can be a small delay. If you experience a delay longer than 1 hour for the initial
         event, please contact us.
       properties:
+        id:
+          type: string
         type:
           type: string
           enum: [webhook-events]
@@ -8384,6 +8407,7 @@ components:
           required:
             - self
       required:
+        - id
         - type
         - attributes
         - relationships
@@ -8395,6 +8419,11 @@ components:
         Below you will find the various attributes for the second factor resource, as well as the resource's
         relationships.
       properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [second-factors]
         attributes:
           type: object
           properties:
@@ -8480,6 +8509,8 @@ components:
             - account
             - user
       required:
+        - id
+        - type
         - attributes
         - relationships
     Error:
