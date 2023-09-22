@@ -44,12 +44,7 @@ paths:
 
         To generate a license token, see the [license token relationship](https://keygen.sh/docs/api/licenses/#licenses-relationships-activation-tokens).
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         content:
           application/vnd.api+json:
@@ -108,44 +103,10 @@ paths:
         first. Resources are automatically scoped to the authenticated bearer e.g. when authenticated as a product, only
         tokens that belong to the specific product will be listed.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of tokens to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
         - name: bearer
           in: query
           description: Object containing the bearer's type and ID.
@@ -179,7 +140,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Token"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -192,12 +153,7 @@ paths:
       summary: Retrieve a token
       description: Retrieves the details of an existing token.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: token
           in: path
           description: The identifier (UUID) of the token to be retrieved.
@@ -226,12 +182,7 @@ paths:
         Regenerate an existing token resource. This will replace the token attribute with a new secure token, and extend
         the token's expiry by 2 weeks from the current time.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: token
           in: path
           description: The identifier (UUID) of the token to be regenerated.
@@ -260,12 +211,7 @@ paths:
         Permanently revokes a token. It cannot be undone. This action also immediately invalidates all sessions using
         the given token.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: token
           in: path
           description: The identifier (UUID) of the token to be revoked.
@@ -284,12 +230,7 @@ paths:
       summary: Create a product
       description: Creates a new product resource.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -360,44 +301,10 @@ paths:
         Returns a list of products. The products are returned sorted by creation date, with the most recent products
         appearing first.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of products to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
       responses:
         "200":
           description: Products retrieved successfully
@@ -411,7 +318,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Product"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -424,12 +331,7 @@ paths:
       summary: Retrieve a product
       description: Retrieves the details of an existing product.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: product
           in: path
           description: The identifier (UUID) of the product to be retrieved.
@@ -458,12 +360,7 @@ paths:
         Updates the specified product resource by setting the values of the parameters passed. Any parameters not
         provided will be left unchanged.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: product
           in: path
           description: The identifier (UUID) of the product to be updated.
@@ -533,12 +430,7 @@ paths:
         Permanently deletes a product. It cannot be undone. This action also immediately deletes any policies, licenses
         and machines that the product is associated with.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: product
           in: path
           description: The identifier (UUID) of the product to be deleted.
@@ -557,12 +449,7 @@ paths:
       summary: Generate a product token
       description: Generates a new product token resource. Product tokens do not expire.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: product
           in: path
           description: The identifier (UUID) of the product to generate a token for.
@@ -614,12 +501,7 @@ paths:
       summary: Create an entitlement
       description: Creates a new entitlement resource.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -677,44 +559,10 @@ paths:
         entitlements appearing first. Resources are automatically scoped to the authenticated bearer e.g. when
         authenticated as a license, only entitlements attached to that specific license will be listed.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of entitlements to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
       responses:
         "200":
           description: Entitlements retrieved successfully
@@ -728,7 +576,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Entitlement"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -739,12 +587,7 @@ paths:
       summary: Retrieve an entitlement
       description: Retrieves the details of an existing entitlement.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: entitlement
           in: path
           description: The identifier (UUID) of the entitlement to be retrieved.
@@ -773,12 +616,7 @@ paths:
         Updates the specified entitlement resource by setting the values of the parameters passed. Any parameters not
         provided will be left unchanged.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: entitlement
           in: path
           description: The identifier (UUID) of the entitlement to be updated.
@@ -834,12 +672,7 @@ paths:
         Permanently deletes an entitlement. The entitlement will immediately be removed from all licenses and policies.
         It cannot be undone.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: entitlement
           in: path
           description: The identifier (UUID) of the entitlement to be deleted.
@@ -858,12 +691,7 @@ paths:
       summary: Create a group
       description: Creates a new group resource.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -932,44 +760,10 @@ paths:
         groups they are an owner of, as well as groups they are a member of. The groups are returned sorted by creation
         date, with the most recent groups appearing first.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of groups to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
       responses:
         "200":
           description: Groups retrieved successfully
@@ -983,7 +777,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Group"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -994,12 +788,7 @@ paths:
       summary: Retrieve a group
       description: Retrieves the details of an existing group.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: group
           in: path
           description: The identifier (UUID) of the group to be retrieved.
@@ -1028,12 +817,7 @@ paths:
         Updates the specified group resource by setting the values of the parameters passed. Any parameters not provided
         will be left unchanged.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: group
           in: path
           description: The identifier (UUID) of the group to be updated.
@@ -1098,12 +882,7 @@ paths:
         Permanently deletes a group. The group will immediately be removed from all users, licenses and machines. It
         cannot be undone.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: group
           in: path
           description: The identifier (UUID) of the group to be deleted.
@@ -1122,12 +901,7 @@ paths:
       summary: Create a policy
       description: Creates a new policy resource.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -1436,44 +1210,10 @@ paths:
         appearing first. Resources are automatically scoped to the authenticated bearer e.g. when authenticated as a
         product, only policies of that specific product will be listed.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of policies to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
         - name: product
           in: query
           description: The identifier (UUID) of the product to filter by.
@@ -1493,7 +1233,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Policy"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -1504,12 +1244,7 @@ paths:
       summary: Retrieve a policy
       description: Retrieves the details of an existing policy.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: policy
           in: path
           description: The identifier (UUID) of the policy to be retrieved.
@@ -1540,12 +1275,7 @@ paths:
         `maxMachines` value will be left unchanged. However, if the `maxMachines` property is provided with a value of
         `null`, then the policy's `maxMachines` value will be updated to `null`.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: policy
           in: path
           description: The identifier (UUID) of the policy to be updated.
@@ -1805,12 +1535,7 @@ paths:
         Permanently deletes a policy. It cannot be undone. This action also immediately deletes any licenses that the
         policy is associated with.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: policy
           in: path
           description: The identifier (UUID) of the policy to be deleted.
@@ -1831,12 +1556,7 @@ paths:
         Pop off (delete) a key from the policy's pool of pre-determined keys. The returned key is only available
         directly after a pop, similar to authentication tokens. This cannot be undone.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: policy
           in: path
           description: The identifier (UUID) of the policy to be retrieved.
@@ -1861,12 +1581,7 @@ paths:
 
         - You cannot attach an already attached entitlement.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: policy
           in: path
           description: The identifier (UUID) of the policy to be updated.
@@ -1918,12 +1633,7 @@ paths:
         Detach entitlements from a policy. This will immediately be taken into effect for all future license
         validations.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: policy
           in: path
           description: The identifier (UUID) of the policy to be updated.
@@ -1966,50 +1676,16 @@ paths:
         Returns a list of entitlements attached to the policy. The entitlements are returned sorted by creation date,
         with the most recent entitlements appearing first.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+          description: A limit on the number of entitlements to be returned.
         - name: policy
           in: path
           description: The identifier (UUID) of the policy to list entitlements for.
           required: true
           schema:
             type: string
-        - name: limit
-          in: query
-          description: A limit on the number of entitlements to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
       responses:
         "200":
           description: Policy entitlements retrieved successfully
@@ -2023,7 +1699,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Entitlement"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -2041,12 +1717,7 @@ paths:
         - {}
         - BearerToken: []
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -2141,44 +1812,10 @@ paths:
         first. Resources are automatically scoped to the authenticated bearer e.g. when authenticated as a product, only
         users associated with the specific product, through a license, will be listed in the results.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of users to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
         - name: status
           in: query
           description: The status of the user to filter by.
@@ -2244,7 +1881,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/User"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -2256,12 +1893,7 @@ paths:
       description: |
         Retrieves the details of an existing user.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be retrieved.
@@ -2290,12 +1922,7 @@ paths:
         Updates the specified user resource by setting the values of the parameters passed. Any parameters not provided
         will be left unchanged.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be updated.
@@ -2388,12 +2015,7 @@ paths:
         Permanently deletes a user. It cannot be undone. This action also immediately deletes any licenses and machines
         that the user is associated with.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be deleted.
@@ -2414,12 +2036,7 @@ paths:
         Action to update the user's password. A user's password can **only** be updated when authenticated as the given
         user. To update the user's password as an admin, use the [update user endpoint](https://keygen.sh/docs/api/users/#users-update).
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be retrieved.
@@ -2477,12 +2094,7 @@ paths:
       security:
         - {}
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be retrieved.
@@ -2534,12 +2146,7 @@ paths:
         Action to ban a user. Banned users cannot authenticate with the API, and all licenses the user owns will have a
         `BANNED` status.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be retrieved.
@@ -2567,12 +2174,7 @@ paths:
       summary: Unban user
       description: Action to unban a user.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be retrieved.
@@ -2606,12 +2208,7 @@ paths:
         This endpoint is particularly useful for generating tokens for a user without a password, or if you want to
         manage logins another way, e.g. server-side.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to generate a token for.
@@ -2665,12 +2262,7 @@ paths:
         Change a user's group relationship. This will immediately transfer the user resource to the new group. Changing
         the user's group will not retroactively change the group of its licenses or of its machines.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user to be updated.
@@ -2718,12 +2310,7 @@ paths:
       summary: Create a license
       description: Creates a new license resource.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -2865,44 +2452,10 @@ paths:
         appearing first. Resources are automatically scoped to the authenticated bearer e.g. when authenticated as a
         user, only licenses of that specific user will be listed.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of licenses to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
         - name: expires
           in: query
           description: Object containing `in`, `before`, or `after` filters.
@@ -2996,7 +2549,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/License"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -3007,12 +2560,7 @@ paths:
       summary: Retrieve a license
       description: Retrieves the details of an existing license.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: |
@@ -3043,12 +2591,7 @@ paths:
         Updates the specified license resource by setting the values of the parameters passed. Any parameters not
         provided will be left unchanged.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or URL-safe key of the license to be updated.
@@ -3121,12 +2664,7 @@ paths:
         Permanently deletes a license. It cannot be undone. This action also immediately deletes any machines that the
         license is associated with.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or URL-safe key of the license to be deleted.
@@ -3207,12 +2745,7 @@ paths:
         | CHECKSUM_SCOPE_MISMATCH    | None of the validated license's accessible artifacts match the provided         |
         |                            | checksum scope, i.e. a matching artifact does not exist or it is inaccessible.  |
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: |
@@ -3350,12 +2883,7 @@ paths:
         The scoping feature allows you to easily set up a node-locked or floating licensing model without additional logic
         on your end.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
       security:
         - {}
       requestBody:
@@ -3479,12 +3007,7 @@ paths:
         Action to temporarily suspend (ban) a license. This will cause the license to fail validation until reinistated.
         To permanently revoke a license, see the [revoke action](https://keygen.sh/docs/api/licenses/#licenses-actions-revoke).
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: |
@@ -3514,12 +3037,7 @@ paths:
       summary: Reinstate a license
       description: Action to reinstate a suspended license.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: |
@@ -3549,12 +3067,7 @@ paths:
       summary: Renew a license
       description: Action to renew a license. Extends license expiry by the policy's duration.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: |
@@ -3586,12 +3099,7 @@ paths:
         Action to revoke (delete) a license. This cannot be undone. This action also immediately deletes any machines
         that the license is associated with.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: |
@@ -3628,12 +3136,7 @@ paths:
 
         For instructions on verifying a license file, please see [license file verification](https://keygen.sh/docs/api/cryptography/#cryptographic-lic).
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or URL-safe key of the license to check-out.
@@ -3687,12 +3190,7 @@ paths:
         Action to check-in a license. Sets the license's `lastCheckIn` to the current time, and the license's
         `nextCheckIn` according to the policy's check-in interval.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or URL-safe key of the license to check-in.
@@ -3723,12 +3221,7 @@ paths:
         policy's `maxUses` limit is exceeded, the increment attempt will fail. When the policy's `maxUses` is set to
         `null`, there is no limit on usage.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or URL-safe key of the license to increment usage for.
@@ -3769,12 +3262,7 @@ paths:
       summary: Decrement license usage
       description: Action to decrement a license's `uses` attribute in accordance with its policy's `maxUses` attribute.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or URL-safe key of the license to decrement usage for.
@@ -3815,12 +3303,7 @@ paths:
       summary: Reset license usage
       description: Action to reset a license's `uses` attribute to `0`.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or URL-safe key of the license to reset usage for.
@@ -3853,12 +3336,7 @@ paths:
         An alternative to Token Authentication is [License Authentication](https://keygen.sh/docs/api/authentication/#license-authentication).
         Typically, we recommend using License Authentication where possible, as it very much simplifies an integration.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or key of the license the token is for.
@@ -3924,11 +3402,7 @@ paths:
         - You cannot attach an entitlement that is already attached through the policy.
         - You cannot attach an already attached entitlement.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or key of the license to be updated.
@@ -3981,11 +3455,7 @@ paths:
 
         - You cannot detach an entitlement that is attached through the policy.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: license
           in: path
           description: The identifier (UUID) or key of the license to be updated.
@@ -4016,48 +3486,15 @@ paths:
         with the most recent entitlements appearing first. The listed entitlements include all entitlements attached to
         the license's policy, in addition to the entitlements attached to the particular license.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+          description: A limit on the number of entitlements to be returned.
         - name: license
           in: path
           description: The identifier (UUID) or key of the license to list entitlements for.
           schema:
             type: string
-        - name: limit
-          in: query
-          description: A limit on the number of entitlements to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
       responses:
         "200":
           description: License entitlements retreived successfully
@@ -4215,11 +3652,7 @@ paths:
       summary: Activate a machine
       description: Creates, or activates, a new machine resource for a license.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -4334,43 +3767,10 @@ paths:
         appearing first. Resources are automatically scoped to the authenticated bearer e.g. when authenticated as a
         user, only machines for that specific user will be listed.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of machines to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
         - name: fingerprint
           in: query
           description: The machine fingerprint to filter by.
@@ -4447,7 +3847,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Machine"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -4460,11 +3860,7 @@ paths:
       summary: Retrieve a machine
       description: Retrieves the details of an existing machine.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: machine
           in: path
           description: The identifier (UUID) or URL-safe fingerprint of the machine to be retrieved.
@@ -4492,11 +3888,7 @@ paths:
         Updates the specified machine resource by setting the values of the parameters passed. Any parameters not
         provided will be left unchanged.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: machine
           in: path
           description: The identifier (UUID) or URL-safe fingerprint of the machine to be updated.
@@ -4603,11 +3995,7 @@ paths:
         Permanently deletes, or deactivates, a machine. It cannot be undone. This will immediately delete all processes
         associated with the machine.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: machine
           in: path
           description: The identifier (UUID) or URL-safe fingerprint of the machine to be deleted.
@@ -4641,12 +4029,7 @@ paths:
 
         For instructions on verifying a machine file, please see [machine file verification](https://keygen.sh/docs/api/cryptography/#cryptographic-lic).
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: machine
           in: path
           description: The identifier (UUID) or URL-safe fingerprint of the machine to check-out.
@@ -4724,12 +4107,7 @@ paths:
         Machines will be culled according to the policy's heartbeat cull strategy, after the machine's resurrection
         period has passed, if set.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: machine
           in: path
           description: The identifier (UUID) or URL-safe fingerprint of the machine to ping.
@@ -4757,12 +4135,7 @@ paths:
       summary: Reset heartbeat
       description: Action to reset and stop the machine's heartbeat monitor. This will not deactivate the machine.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: machine
           in: path
           description: The identifier (UUID) or URL-safe fingerprint of the machine to reset.
@@ -4792,11 +4165,7 @@ paths:
         Change a machine's group relationship. This will immediately transfer the machine resource to the new group.
         Changing the machine's group will not retroactively change the group of its user or license.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: machine
           in: path
           description: The identifier (UUID) or key of the machine to be updated.
@@ -4844,11 +4213,7 @@ paths:
       summary: Spawn a process
       description: Spawns (creates) a new process resource for a machine.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -4926,43 +4291,10 @@ paths:
         appearing first. Resources are automatically scoped to the authenticated bearer e.g. when authenticated as a
         user, only processes for that specific user will be listed.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-        - name: limit
-          in: query
+        - $ref: "#/components/parameters/Account"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
           description: A limit on the number of processes to be returned.
-          required: false
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100
-            default: 10
-        - name: page
-          in: query
-          description: Object containing page `size` and page `number`.
-          required: false
-          style: deepObject
-          explode: true
-          schema:
-            type: object
-            properties:
-              size:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 100
-                default: 10
-                description: The page size.
-              number:
-                type: integer
-                format: int64
-                default: 1
-                minimum: 1
-                description: The page number.
         - name: machine
           in: query
           description: The identifier (UUID) of the machine to filter by.
@@ -5000,7 +4332,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/Process"
                   links:
-                    $ref: "#/components/schemas/Pagination"
+                    $ref: "#/components/schemas/PaginationLinks"
                 required:
                   - data
                   - links
@@ -5013,11 +4345,7 @@ paths:
       summary: Retrieve a process
       description: Retrieves the details of an existing process.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: process
           in: path
           description: The identifier (UUID) of the process to be retrieved.
@@ -5045,11 +4373,7 @@ paths:
         Updates the specified process resource by setting the values of the parameters passed. Any parameters not
         provided will be left unchanged.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: process
           in: path
           description: The identifier (UUID) of the process to be updated.
@@ -5116,11 +4440,7 @@ paths:
       summary: Kill a process
       description: Permanently kills (deletes) a process. It cannot be undone.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: process
           in: path
           description: The identifier (UUID) of the process to be deleted.
@@ -5168,12 +4488,7 @@ paths:
         Processes will be culled according to the policy's heartbeat cull strategy, after the process's resurrection
         period has passed, if set.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
-          required: true
+        - $ref: "#/components/parameters/Account"
         - name: process
           in: path
           description: The identifier (UUID) of the process to ping.
@@ -5204,11 +4519,7 @@ paths:
         to. Utilize this to determine who the current user is, what token they used, to retrieve information on who made
         the API request.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       responses:
         "200":
           description: Profile retrieved successfully
@@ -5250,12 +4561,7 @@ paths:
       security:
         - {}
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
       requestBody:
         required: true
         content:
@@ -5292,12 +4598,7 @@ paths:
         Adds a new second factor for the user. After adding the second factor, it must be enabled via [an update](https://keygen.sh/docs/api/users/#second-factors-update).
         To enable the second factor, a valid OTP must be provided.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user the second factor is for.
@@ -5341,12 +4642,7 @@ paths:
         Returns a list of second factors. The second factors are returned sorted by creation date, with the most recent
         second factors appearing first.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of the user the second factors are for.
@@ -5376,12 +4672,7 @@ paths:
       summary: Retrieve a second factor
       description: Retrieves the details of an existing second factor.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of a user the second factor belongs to.
@@ -5415,12 +4706,7 @@ paths:
       description: |
         Update an existing second factor for the user. This can be used to enable and disable a second factor as-needed.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of a user the second factor belongs to.
@@ -5481,12 +4767,7 @@ paths:
       summary: Delete a second factor
       description: Permanently deletes a second factor. It cannot be undone.
       parameters:
-        - name: account
-          in: path
-          description: The identifier (UUID) or slug of your Keygen account.
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/Account"
         - name: user
           in: path
           description: The identifier (UUID) or email of a user the second factor belongs to.
@@ -5526,6 +4807,48 @@ webhooks:
         "200":
           description: Event processed successfully
 components:
+  parameters:
+    Account:
+      name: account
+      in: path
+      description: The identifier (UUID) or slug of your Keygen account.
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: A limit on the number of objects to be returned.
+      required: false
+      schema:
+        type: integer
+        format: int64
+        minimum: 1
+        maximum: 100
+        default: 10
+    Page:
+      name: page
+      in: query
+      description: Object containing page `size` and page `number`.
+      required: false
+      style: deepObject
+      explode: true
+      schema:
+        type: object
+        properties:
+          size:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100
+            default: 10
+            description: The page size.
+          number:
+            type: integer
+            format: int64
+            default: 1
+            minimum: 1
+            description: The page number.
   responses:
     Error:
       description: An error occurred
@@ -5632,13 +4955,7 @@ components:
               description: The account that the token belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -5658,13 +4975,7 @@ components:
               description: The bearer of the token.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -5764,13 +5075,7 @@ components:
               description: The account that the product belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -5790,13 +5095,7 @@ components:
               description: The policies that are associated with the product.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             licenses:
@@ -5804,13 +5103,7 @@ components:
               description: The licenses that are associated with the product.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             machines:
@@ -5818,13 +5111,7 @@ components:
               description: The machines that are associated with the product.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             users:
@@ -5832,13 +5119,7 @@ components:
               description: The users that own a license for the product.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             tokens:
@@ -5846,13 +5127,7 @@ components:
               description: The authentication tokens of the product.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
           required:
@@ -5863,13 +5138,7 @@ components:
             - users
             - tokens
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -5929,13 +5198,7 @@ components:
               description: The account that the entitlement belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -5953,13 +5216,7 @@ components:
           required:
             - account
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -6046,13 +5303,7 @@ components:
               description: The account that the group belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -6072,13 +5323,7 @@ components:
               description: The owners of the group.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             users:
@@ -6086,13 +5331,7 @@ components:
               description: The users that are in the group.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             licenses:
@@ -6100,13 +5339,7 @@ components:
               description: The licenses that are in the group.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             machines:
@@ -6114,13 +5347,7 @@ components:
               description: The machines that are in the group.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
           required:
@@ -6130,13 +5357,7 @@ components:
             - licenses
             - machines
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -6638,13 +5859,7 @@ components:
               description: The account that the policy belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -6664,13 +5879,7 @@ components:
               description: The product that the policy is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -6690,13 +5899,7 @@ components:
               description: The pool of pre-determined keys for the policy.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             licenses:
@@ -6704,26 +5907,14 @@ components:
               description: The licenses that implement the policy.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             entitlements:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
           required:
@@ -6733,13 +5924,7 @@ components:
             - licenses
             - entitlements
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -6774,13 +5959,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -6799,13 +5978,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -6824,13 +5997,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -6850,13 +6017,7 @@ components:
             - entitlement
             - policy
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -6973,13 +6134,7 @@ components:
               description: The account that the user belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -6999,13 +6154,7 @@ components:
               description: The group the user belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   nullable: true
@@ -7026,13 +6175,7 @@ components:
               description: The products that the user is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             licenses:
@@ -7040,13 +6183,7 @@ components:
               description: The licenses that the user owns.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             machines:
@@ -7054,13 +6191,7 @@ components:
               description: The machines that the user owns.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
             tokens:
@@ -7068,13 +6199,7 @@ components:
               description: The authentication tokens of the user.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
           required:
@@ -7085,13 +6210,7 @@ components:
             - machines
             - tokens
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -7284,13 +6403,7 @@ components:
               description: The account that the license belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7310,13 +6423,7 @@ components:
               description: The product that the license is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7336,13 +6443,7 @@ components:
               description: The policy that the license implements.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7363,13 +6464,7 @@ components:
                 The group the license belongs to. By default, this is inherited from the license's user, if present.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   nullable: true
@@ -7390,13 +6485,7 @@ components:
               description: The user that owns the license.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   nullable: true
@@ -7417,13 +6506,7 @@ components:
               description: The machines that the license is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
           required:
@@ -7434,13 +6517,7 @@ components:
             - user
             - machines
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -7475,13 +6552,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7500,13 +6571,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7525,13 +6590,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7551,13 +6610,7 @@ components:
             - entitlement
             - license
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -7599,13 +6652,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7624,13 +6671,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7765,13 +6806,7 @@ components:
               description: The account that the machine belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7791,13 +6826,7 @@ components:
               description: The product that the machine is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7817,13 +6846,7 @@ components:
               description: The license that the machine is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7843,13 +6866,7 @@ components:
               description: The group the machine belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   nullable: true
@@ -7870,13 +6887,7 @@ components:
               description: The user that owns the machine.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   nullable: true
@@ -7897,13 +6908,7 @@ components:
               description: The processes for the machine.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
               required:
                 - links
           required:
@@ -7914,13 +6919,7 @@ components:
             - user
             - processes
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -7962,13 +6961,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -7987,13 +6980,7 @@ components:
               type: object
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8095,13 +7082,7 @@ components:
               description: The account that the process belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8121,13 +7102,7 @@ components:
               description: The product that the process is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8147,13 +7122,7 @@ components:
               description: The license that the process is associated with.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8173,13 +7142,7 @@ components:
               description: The machine that the process is for.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8200,13 +7163,7 @@ components:
             - license
             - machine
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -8375,13 +7332,7 @@ components:
               description: The account that the event belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8399,13 +7350,7 @@ components:
           required:
             - account
         links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-          required:
-            - self
+          $ref: "#/components/schemas/SelfLinks"
       required:
         - id
         - type
@@ -8458,13 +7403,7 @@ components:
               description: The account that the second factor belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8484,13 +7423,7 @@ components:
               description: The user the second factor belongs to.
               properties:
                 links:
-                  type: object
-                  properties:
-                    related:
-                      type: string
-                      format: uri
-                  required:
-                    - related
+                  $ref: "#/components/schemas/RelatedLinks"
                 data:
                   type: object
                   properties:
@@ -8547,7 +7480,7 @@ components:
       required:
         - title
         - detail
-    Pagination:
+    PaginationLinks:
       type: object
       properties:
         first:
@@ -8584,6 +7517,22 @@ components:
         - prev
         - next
         - meta
+    SelfLinks:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+      required:
+        - self
+    RelatedLinks:
+      type: object
+      properties:
+        related:
+          type: string
+          format: uri
+      required:
+        - related
   securitySchemes:
     BasicAuth:
       type: http
