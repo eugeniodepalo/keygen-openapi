@@ -3555,6 +3555,8 @@ paths:
         default:
           $ref: "#/components/responses/Error"
     delete:
+      tags:
+        - Licenses
       summary: Detach license entitlements
       description: |
         Detach entitlements from a license. This will immediately be taken into effect for all future validations.
@@ -4710,6 +4712,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveProfileResponse
                 type: object
                 properties:
                   data:
