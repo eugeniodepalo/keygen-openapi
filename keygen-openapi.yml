@@ -1643,6 +1643,8 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/PolicyEntitlement"
+                required:
+                  - data
         default:
           $ref: "#/components/responses/Error"
     delete:
