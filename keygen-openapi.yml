@@ -48,6 +48,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: GenerateTokenRequest
               type: object
               properties:
                 data:
@@ -83,6 +84,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: GenerateTokenResponse
                 type: object
                 properties:
                   data:
@@ -132,6 +134,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListTokensResponse
                 type: object
                 properties:
                   data:
@@ -165,6 +168,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveTokenResponse
                 type: object
                 properties:
                   data:
@@ -194,6 +198,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RegenerateTokenResponse
                 type: object
                 properties:
                   data:
@@ -235,6 +240,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: CreateProductRequest
               type: object
               properties:
                 data:
@@ -285,6 +291,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CreateProductResponse
                 type: object
                 properties:
                   data:
@@ -311,6 +318,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListProductsResponse
                 type: object
                 properties:
                   data:
@@ -344,6 +352,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveProductResponse
                 type: object
                 properties:
                   data:
@@ -371,6 +380,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateProductRequest
               type: object
               properties:
                 data:
@@ -414,6 +424,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateProductResponse
                 type: object
                 properties:
                   data:
@@ -460,6 +471,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: GenerateProductTokenRequest
               type: object
               properties:
                 data:
@@ -486,6 +498,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: GenerateProductTokenResponse
                 type: object
                 properties:
                   data:
@@ -507,6 +520,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: CreateEntitlementRequest
               type: object
               properties:
                 data:
@@ -542,6 +556,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CreateEntitlementResponse
                 type: object
                 properties:
                   data:
@@ -569,6 +584,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListEntitlementsResponse
                 type: object
                 properties:
                   data:
@@ -600,6 +616,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveEntitlementResponse
                 type: object
                 properties:
                   data:
@@ -627,6 +644,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateEntitlementRequest
               type: object
               properties:
                 data:
@@ -656,6 +674,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateEntitlementResponse
                 type: object
                 properties:
                   data:
@@ -697,6 +716,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: CreateGroupRequest
               type: object
               properties:
                 data:
@@ -746,6 +766,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CreateGroupResponse
                 type: object
                 properties:
                   data:
@@ -773,6 +794,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListGroupsResponse
                 type: object
                 properties:
                   data:
@@ -804,6 +826,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveGroupResponse
                 type: object
                 properties:
                   data:
@@ -831,6 +854,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateGroupRequest
               type: object
               properties:
                 data:
@@ -869,6 +893,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateGroupResponse
                 type: object
                 properties:
                   data:
@@ -910,6 +935,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: CreatePolicyRequest
               type: object
               properties:
                 data:
@@ -1205,6 +1231,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CreatePolicyResponse
                 type: object
                 properties:
                   data:
@@ -1238,6 +1265,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListPoliciesResponse
                 type: object
                 properties:
                   data:
@@ -1269,6 +1297,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrievePolicyResponse
                 type: object
                 properties:
                   data:
@@ -1298,6 +1327,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdatePolicyRequest
               type: object
               properties:
                 data:
@@ -1539,6 +1569,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdatePolicyResponse
                 type: object
                 properties:
                   data:
@@ -1613,6 +1644,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: AttachPolicyEntitlementsRequest
               type: object
               properties:
                 data:
@@ -1637,6 +1669,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: AttachPolicyEntitlementsResponse
                 type: object
                 properties:
                   data:
@@ -1667,6 +1700,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: DetachPolicyEntitlementsRequest
               type: object
               properties:
                 data:
@@ -1714,6 +1748,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListPolicyEntitlementsResponse
                 type: object
                 properties:
                   data:
@@ -1745,6 +1780,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: CreateUserRequest
               type: object
               properties:
                 data:
@@ -1818,6 +1854,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CreateUserResponse
                 type: object
                 properties:
                   data:
@@ -1897,6 +1934,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListUsersResponse
                 type: object
                 properties:
                   data:
@@ -1929,6 +1967,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveUserResponse
                 type: object
                 properties:
                   data:
@@ -1956,6 +1995,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateUserRequest
               type: object
               properties:
                 data:
@@ -2022,6 +2062,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateUserResponse
                 type: object
                 properties:
                   data:
@@ -2071,6 +2112,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateUserPasswordRequest
               type: object
               properties:
                 meta:
@@ -2094,6 +2136,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateUserPasswordResponse
                 type: object
                 properties:
                   data:
@@ -2129,6 +2172,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ResetUserPasswordRequest
               type: object
               properties:
                 meta:
@@ -2152,6 +2196,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ResetUserPasswordResponse
                 type: object
                 properties:
                   data:
@@ -2182,6 +2227,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: BanUserResponse
                 type: object
                 properties:
                   data:
@@ -2210,6 +2256,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UnbanUserResponse
                 type: object
                 properties:
                   data:
@@ -2242,6 +2289,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: GenerateUserTokenRequest
               type: object
               properties:
                 data:
@@ -2268,6 +2316,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: GenerateUserTokenResponse
                 type: object
                 properties:
                   data:
@@ -2297,6 +2346,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ChangeUserGroupRequest
               type: object
               properties:
                 data:
@@ -2318,6 +2368,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ChangeUserGroupResponse
                 type: object
                 properties:
                   data:
@@ -2339,6 +2390,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: CreateLicenseRequest
               type: object
               properties:
                 data:
@@ -2461,6 +2513,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CreateLicenseResponse
                 type: object
                 properties:
                   data:
@@ -2568,6 +2621,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListLicensesResponse
                 type: object
                 properties:
                   data:
@@ -2601,6 +2655,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveLicenseResponse
                 type: object
                 properties:
                   data:
@@ -2628,6 +2683,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateLicenseRequest
               type: object
               properties:
                 name:
@@ -2679,6 +2735,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateLicenseResponse
                 type: object
                 properties:
                   data:
@@ -2789,6 +2846,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ValidateLicenseRequest
               type: object
               properties:
                 meta:
@@ -2842,6 +2900,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ValidateLicenseResponse
                 type: object
                 properties:
                   meta:
@@ -2921,6 +2980,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ValidateLicenseKeyRequest
               type: object
               properties:
                 meta:
@@ -2974,6 +3034,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ValidateLicenseKeyResponse
                 type: object
                 properties:
                   meta:
@@ -3053,6 +3114,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: SuspendLicenseResponse
                 type: object
                 properties:
                   data:
@@ -3083,6 +3145,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ReinstateLicenseResponse
                 type: object
                 properties:
                   data:
@@ -3113,6 +3176,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RenewLicenseResponse
                 type: object
                 properties:
                   data:
@@ -3145,6 +3209,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RevokeLicenseResponse
                 type: object
                 properties:
                   data:
@@ -3204,6 +3269,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CheckOutLicenseResponse
                 type: object
                 properties:
                   data:
@@ -3234,6 +3300,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CheckInLicenseResponse
                 type: object
                 properties:
                   data:
@@ -3263,6 +3330,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: IncrementLicenseUsageRequest
               type: object
               properties:
                 meta:
@@ -3278,6 +3346,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: IncrementLicenseUsageResponse
                 type: object
                 properties:
                   data:
@@ -3304,6 +3373,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: DecrementLicenseUsageRequest
               type: object
               properties:
                 meta:
@@ -3319,6 +3389,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: DecrementLicenseUsageResponse
                 type: object
                 properties:
                   data:
@@ -3347,6 +3418,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ResetLicenseUsageResponse
                 type: object
                 properties:
                   data:
@@ -3378,6 +3450,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: CreateLicenseTokenRequest
               type: object
               properties:
                 data:
@@ -3412,6 +3485,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CreateLicenseTokenResponse
                 type: object
                 properties:
                   data:
@@ -3445,6 +3519,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: AttachLicenseEntitlementsRequest
               type: object
               properties:
                 data:
@@ -3468,6 +3543,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: AttachLicenseEntitlementsResponse
                 type: object
                 properties:
                   data:
@@ -3500,6 +3576,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: DetachLicenseEntitlementsResponse
                 type: object
                 properties:
                   data:
@@ -3535,6 +3612,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListLicenseEntitlementsResponse
                 type: object
                 properties:
                   data:
@@ -3573,6 +3651,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ChangeLicensePolicyRequest
               type: object
               properties:
                 data:
@@ -3594,6 +3673,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ChangeLicensePolicyResponse
                 type: object
                 properties:
                   data:
@@ -3622,6 +3702,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ChangeLicenseUserRequest
               type: object
               properties:
                 data:
@@ -3645,6 +3726,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ChangeLicenseUserResponse
                 type: object
                 properties:
                   data:
@@ -3674,6 +3756,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ChangeLicenseGroupRequest
               type: object
               properties:
                 data:
@@ -3697,6 +3780,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ChangeLicenseGroupResponse
                 type: object
                 properties:
                   data:
@@ -3718,6 +3802,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ActivateMachineRequest
               type: object
               properties:
                 data:
@@ -3816,6 +3901,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ActivateMachineResponse
                 type: object
                 properties:
                   data:
@@ -3906,6 +3992,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListMachinesResponse
                 type: object
                 properties:
                   data:
@@ -3939,6 +4026,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveMachineResponse
                 type: object
                 properties:
                   data:
@@ -3966,6 +4054,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateMachineRequest
               type: object
               properties:
                 data:
@@ -4053,6 +4142,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateMachineResponse
                 type: object
                 properties:
                   data:
@@ -4082,6 +4172,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: DeactivateMachineResponse
                 type: object
                 properties:
                   data:
@@ -4149,6 +4240,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: CheckOutMachineResponse
                 type: object
                 properties:
                   data:
@@ -4195,6 +4287,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: PingMachineResponse
                 type: object
                 properties:
                   data:
@@ -4223,6 +4316,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ResetMachineResponse
                 type: object
                 properties:
                   data:
@@ -4252,6 +4346,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ChangeMachineGroupRequest
               type: object
               properties:
                 data:
@@ -4275,6 +4370,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ChangeMachineGroupResponse
                 type: object
                 properties:
                   data:
@@ -4296,6 +4392,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: SpawnProcessRequest
               type: object
               properties:
                 data:
@@ -4351,6 +4448,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: SpawnProcessResponse
                 type: object
                 properties:
                   data:
@@ -4402,6 +4500,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListProcessesResponse
                 type: object
                 properties:
                   data:
@@ -4435,6 +4534,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveProcessResponse
                 type: object
                 properties:
                   data:
@@ -4462,6 +4562,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateProcessRequest
               type: object
               properties:
                 data:
@@ -4505,6 +4606,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateProcessResponse
                 type: object
                 properties:
                   data:
@@ -4532,6 +4634,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: KillProcessResponse
                 type: object
                 properties:
                   data:
@@ -4581,6 +4684,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: PingProcessResponse
                 type: object
                 properties:
                   data:
@@ -4647,6 +4751,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: ForgotPasswordRequest
               type: object
               properties:
                 meta:
@@ -4689,6 +4794,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: AddSecondFactorRequest
               type: object
               properties:
                 meta:
@@ -4706,6 +4812,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: AddSecondFactorResponse
                 type: object
                 properties:
                   data:
@@ -4735,6 +4842,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: ListSecondFactorsResponse
                 type: object
                 properties:
                   data:
@@ -4771,6 +4879,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: RetrieveSecondFactorResponse
                 type: object
                 properties:
                   data:
@@ -4804,6 +4913,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
+              title: UpdateSecondFactorRequest
               type: object
               properties:
                 data:
@@ -4833,6 +4943,7 @@ paths:
           content:
             application/vnd.api+json:
               schema:
+                title: UpdateSecondFactorResponse
                 type: object
                 properties:
                   data:
