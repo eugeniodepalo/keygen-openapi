@@ -115,6 +115,7 @@ paths:
           style: deepObject
           explode: true
           schema:
+            title: ListTokensBearerParameter
             type: object
             properties:
               type:
@@ -2542,6 +2543,7 @@ paths:
           style: deepObject
           explode: true
           schema:
+            title: ListLicensesExpiresParameter
             type: object
             properties:
               in:
@@ -5365,26 +5367,34 @@ components:
           type: string
           enum: [entitlements]
         attributes:
-          name:
-            type: string
-            description: The name of the entitlement.
-          code:
-            type: string
-            description: |
-              The unique code for the entitlement. This can be used within license validation requests to assert a
-              license possesses a given entitlement.
-          created:
-            type: string
-            format: date-time
-            description: When the entitlement was created.
-          updated:
-            type: string
-            format: date-time
-            description: When the entitlement was last updated.
-          metadata:
-            type: object
-            description: Object containing entitlement metadata.
-            additionalProperties: true
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the entitlement.
+            code:
+              type: string
+              description: |
+                The unique code for the entitlement. This can be used within license validation requests to assert a
+                license possesses a given entitlement.
+            created:
+              type: string
+              format: date-time
+              description: When the entitlement was created.
+            updated:
+              type: string
+              format: date-time
+              description: When the entitlement was last updated.
+            metadata:
+              type: object
+              description: Object containing entitlement metadata.
+              additionalProperties: true
+          required:
+            - name
+            - code
+            - created
+            - updated
+            - metadata
         relationships:
           type: object
           properties:
