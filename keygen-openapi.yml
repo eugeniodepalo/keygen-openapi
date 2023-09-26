@@ -2501,8 +2501,6 @@ paths:
                             - data
                       required:
                         - policy
-                        - group
-                        - user
                   required:
                     - type
                     - relationships
