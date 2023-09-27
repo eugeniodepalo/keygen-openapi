@@ -597,6 +597,8 @@ paths:
                 required:
                   - data
                   - links
+        default:
+          $ref: "#/components/responses/Error"
   /accounts/{account}/entitlements/{entitlement}:
     get:
       tags:
@@ -807,6 +809,8 @@ paths:
                 required:
                   - data
                   - links
+        default:
+          $ref: "#/components/responses/Error"
   /accounts/{account}/groups/{group}:
     get:
       tags:
@@ -1278,6 +1282,8 @@ paths:
                 required:
                   - data
                   - links
+        default:
+          $ref: "#/components/responses/Error"
   /accounts/{account}/policies/{policy}:
     get:
       tags:
@@ -1761,6 +1767,8 @@ paths:
                 required:
                   - data
                   - links
+        default:
+          $ref: "#/components/responses/Error"
   /accounts/{account}/users:
     post:
       tags:
@@ -1947,6 +1955,8 @@ paths:
                 required:
                   - data
                   - links
+        default:
+          $ref: "#/components/responses/Error"
   /accounts/{account}/users/{user}:
     get:
       tags:
@@ -2633,6 +2643,8 @@ paths:
                 required:
                   - data
                   - links
+        default:
+          $ref: "#/components/responses/Error"
   /accounts/{account}/licenses/{license}:
     get:
       tags:
