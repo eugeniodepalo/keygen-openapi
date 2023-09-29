@@ -28,6 +28,7 @@ paths:
     post:
       tags:
         - Tokens
+      operationId: generateToken
       summary: Generate a token
       description: |
         Generate a new token resource for a user, using the user's email and password. Keygen does not store your tokens
@@ -98,6 +99,7 @@ paths:
     get:
       tags:
         - Tokens
+      operationId: listTokens
       summary: List all tokens
       description: |
         Returns a list of tokens. The tokens are returned sorted by creation date, with the most recent tokens appearing
@@ -153,6 +155,7 @@ paths:
     get:
       tags:
         - Tokens
+      operationId: retrieveToken
       summary: Retrieve a token
       description: Retrieves the details of an existing token.
       parameters:
@@ -181,6 +184,7 @@ paths:
     put:
       tags:
         - Tokens
+      operationId: regenerateToken
       summary: Regenerate a token
       description: |
         Regenerate an existing token resource. This will replace the token attribute with a new secure token, and extend
@@ -211,6 +215,7 @@ paths:
     delete:
       tags:
         - Tokens
+      operationId: revokeToken
       summary: Revoke a token
       description: |
         Permanently revokes a token. It cannot be undone. This action also immediately invalidates all sessions using
@@ -232,6 +237,7 @@ paths:
     post:
       tags:
         - Products
+      operationId: createProduct
       summary: Create a product
       description: Creates a new product resource.
       parameters:
@@ -304,6 +310,7 @@ paths:
     get:
       tags:
         - Products
+      operationId: listProducts
       summary: List all products
       description: |
         Returns a list of products. The products are returned sorted by creation date, with the most recent products
@@ -337,6 +344,7 @@ paths:
     get:
       tags:
         - Products
+      operationId: retrieveProduct
       summary: Retrieve a product
       description: Retrieves the details of an existing product.
       parameters:
@@ -365,6 +373,7 @@ paths:
     patch:
       tags:
         - Products
+      operationId: updateProduct
       summary: Update a product
       description: |
         Updates the specified product resource by setting the values of the parameters passed. Any parameters not
@@ -437,6 +446,7 @@ paths:
     delete:
       tags:
         - Products
+      operationId: deleteProduct
       summary: Delete a product
       description: |
         Permanently deletes a product. It cannot be undone. This action also immediately deletes any policies, licenses
@@ -458,6 +468,7 @@ paths:
     post:
       tags:
         - Products
+      operationId: generateProductToken
       summary: Generate a product token
       description: Generates a new product token resource. Product tokens do not expire.
       parameters:
@@ -512,6 +523,7 @@ paths:
     post:
       tags:
         - Entitlements
+      operationId: createEntitlement
       summary: Create an entitlement
       description: Creates a new entitlement resource.
       parameters:
@@ -569,6 +581,7 @@ paths:
     get:
       tags:
         - Entitlements
+      operationId: listEntitlements
       summary: List all entitlements
       description: |
         Returns a list of entitlements. The entitlements are returned sorted by creation date, with the most recent
@@ -603,6 +616,7 @@ paths:
     get:
       tags:
         - Entitlements
+      operationId: retrieveEntitlement
       summary: Retrieve an entitlement
       description: Retrieves the details of an existing entitlement.
       parameters:
@@ -631,6 +645,7 @@ paths:
     patch:
       tags:
         - Entitlements
+      operationId: updateEntitlement
       summary: Update an entitlement
       description: |
         Updates the specified entitlement resource by setting the values of the parameters passed. Any parameters not
@@ -689,6 +704,7 @@ paths:
     delete:
       tags:
         - Entitlements
+      operationId: deleteEntitlement
       summary: Delete an entitlement
       description: |
         Permanently deletes an entitlement. The entitlement will immediately be removed from all licenses and policies.
@@ -710,6 +726,7 @@ paths:
     post:
       tags:
         - Groups
+      operationId: createGroup
       summary: Create a group
       description: Creates a new group resource.
       parameters:
@@ -781,6 +798,7 @@ paths:
     get:
       tags:
         - Groups
+      operationId: listGroups
       summary: List all groups
       description: |
         Returns a list of groups. This will include all groups associated with the authenticated bearer, including
@@ -815,6 +833,7 @@ paths:
     get:
       tags:
         - Groups
+      operationId: retrieveGroup
       summary: Retrieve a group
       description: Retrieves the details of an existing group.
       parameters:
@@ -843,6 +862,7 @@ paths:
     patch:
       tags:
         - Groups
+      operationId: updateGroup
       summary: Update a group
       description: |
         Updates the specified group resource by setting the values of the parameters passed. Any parameters not provided
@@ -910,6 +930,7 @@ paths:
     delete:
       tags:
         - Groups
+      operationId: deleteGroup
       summary: Delete a group
       description: |
         Permanently deletes a group. The group will immediately be removed from all users, licenses and machines. It
@@ -931,6 +952,7 @@ paths:
     post:
       tags:
         - Policies
+      operationId: createPolicy
       summary: Create a policy
       description: Creates a new policy resource.
       parameters:
@@ -1248,6 +1270,7 @@ paths:
     get:
       tags:
         - Policies
+      operationId: listPolicies
       summary: List all policies
       description: |
         Returns a list of policies. The policies are returned sorted by creation date, with the most recent policies
@@ -1288,6 +1311,7 @@ paths:
     get:
       tags:
         - Policies
+      operationId: retrievePolicy
       summary: Retrieve a policy
       description: Retrieves the details of an existing policy.
       parameters:
@@ -1316,6 +1340,7 @@ paths:
     patch:
       tags:
         - Policies
+      operationId: updatePolicy
       summary: Update a policy
       description: |
         Updates the specified policy resource by setting the values of the parameters passed. Any parameters not
@@ -1588,6 +1613,7 @@ paths:
     delete:
       tags:
         - Policies
+      operationId: deletePolicy
       summary: Delete a policy
       description: |
         Permanently deletes a policy. It cannot be undone. This action also immediately deletes any licenses that the
@@ -1609,6 +1635,7 @@ paths:
     delete:
       tags:
         - Policies
+      operationId: popKeyFromPolicyPool
       summary: Pop key from pool
       description: |
         Pop off (delete) a key from the policy's pool of pre-determined keys. The returned key is only available
@@ -1630,6 +1657,7 @@ paths:
     post:
       tags:
         - Policies
+      operationId: attachPolicyEntitlements
       summary: Attach policy entitlements
       description: |
         Attach entitlements to a policy. This will immediately be taken into effect for all future license validations.
@@ -1690,6 +1718,7 @@ paths:
     delete:
       tags:
         - Policies
+      operationId: detachPolicyEntitlements
       summary: Detach policy entitlements
       description: |
         Detach entitlements from a policy. This will immediately be taken into effect for all future license
@@ -1734,6 +1763,7 @@ paths:
     get:
       tags:
         - Policies
+      operationId: listPolicyEntitlements
       summary: List policy entitlements
       description: |
         Returns a list of entitlements attached to the policy. The entitlements are returned sorted by creation date,
@@ -1773,6 +1803,7 @@ paths:
     post:
       tags:
         - Users
+      operationId: createUser
       summary: Create a user
       description: |
         Creates a new user resource. Users may be created with only an email address — no name or password is
@@ -1875,6 +1906,7 @@ paths:
     get:
       tags:
         - Users
+      operationId: listUsers
       summary: List all users
       description: |
         Returns a list of users. The users are returned sorted by creation date, with the most recent users appearing
@@ -1961,6 +1993,7 @@ paths:
     get:
       tags:
         - Users
+      operationId: retrieveUser
       summary: Retrieve a user
       description: |
         Retrieves the details of an existing user.
@@ -1991,6 +2024,7 @@ paths:
       tags:
         - Users
       summary: Update a user
+      operationId: updateUser
       description: |
         Updates the specified user resource by setting the values of the parameters passed. Any parameters not provided
         will be left unchanged.
@@ -2085,6 +2119,7 @@ paths:
     delete:
       tags:
         - Users
+      operationId: deleteUser
       summary: Delete a user
       description: |
         Permanently deletes a user. It cannot be undone. This action also immediately deletes any licenses and machines
@@ -2106,6 +2141,7 @@ paths:
     post:
       tags:
         - Users
+      operationId: updateUserPassword
       summary: Update password
       description: |
         Action to update the user's password. A user's password can **only** be updated when authenticated as the given
@@ -2160,6 +2196,7 @@ paths:
     post:
       tags:
         - Users
+      operationId: resetUserPassword
       summary: Reset password
       description: |
         Fulfill a user's password reset request. Password reset tokens expire 24 hours after [requesting the reset](https://keygen.sh/docs/api/passwords/#passwords-forgot).
@@ -2220,6 +2257,7 @@ paths:
     post:
       tags:
         - Users
+      operationId: banUser
       summary: Ban user
       description: |
         Action to ban a user. Banned users cannot authenticate with the API, and all licenses the user owns will have a
@@ -2251,6 +2289,7 @@ paths:
     post:
       tags:
         - Users
+      operationId: unbanUser
       summary: Unban user
       description: Action to unban a user.
       parameters:
@@ -2280,6 +2319,7 @@ paths:
     post:
       tags:
         - Users
+      operationId: generateUserToken
       summary: Generate a user token
       description: |
         Generates a new user token resource. User tokens, by default, expire after 2 weeks. Though this can be adjusted
@@ -2340,6 +2380,7 @@ paths:
     put:
       tags:
         - Users
+      operationId: changeUserGroup
       summary: Change group
       description: |
         Change a user's group relationship. This will immediately transfer the user resource to the new group. Changing
@@ -2392,6 +2433,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: createLicense
       summary: Create a license
       description: Creates a new license resource.
       parameters:
@@ -2534,6 +2576,7 @@ paths:
     get:
       tags:
         - Licenses
+      operationId: listLicenses
       summary: List all licenses
       description: |
         Returns a list of licenses. The licenses are returned sorted by creation date, with the most recent licenses
@@ -2649,6 +2692,7 @@ paths:
     get:
       tags:
         - Licenses
+      operationId: retrieveLicense
       summary: Retrieve a license
       description: Retrieves the details of an existing license.
       parameters:
@@ -2679,6 +2723,7 @@ paths:
     patch:
       tags:
         - Licenses
+      operationId: updateLicense
       summary: Update a license
       description: |
         Updates the specified license resource by setting the values of the parameters passed. Any parameters not
@@ -2759,6 +2804,7 @@ paths:
     delete:
       tags:
         - Licenses
+      operationId: deleteLicense
       summary: Delete a license
       description: |
         Permanently deletes a license. It cannot be undone. This action also immediately deletes any machines that the
@@ -2780,6 +2826,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: validateLicense
       summary: Validate by license ID
       description: |
         Action to validate a license. This will check the following: if the license is suspended, if the license is
@@ -2972,6 +3019,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: validateLicenseKey
       summary: Validate by license key
       description: |
         Action to validate a license key. This will look up the license by its key and check the following: if the license
@@ -3106,6 +3154,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: suspendLicense
       summary: Suspend a license
       description: |
         Action to temporarily suspend (ban) a license. This will cause the license to fail validation until reinistated.
@@ -3139,6 +3188,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: reinstateLicense
       summary: Reinstate a license
       description: Action to reinstate a suspended license.
       parameters:
@@ -3170,6 +3220,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: renewLicense
       summary: Renew a license
       description: Action to renew a license. Extends license expiry by the policy's duration.
       parameters:
@@ -3201,6 +3252,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: revokeLicense
       summary: Revoke a license
       description: |
         Action to revoke (delete) a license. This cannot be undone. This action also immediately deletes any machines
@@ -3234,6 +3286,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: checkOutLicense
       summary: Check-out license
       description: |
         Action to check-out a license. This will generate a snapshot of the license at time of checkout, encoded into a
@@ -3294,6 +3347,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: checkInLicense
       summary: Check-in a license
       description: |
         Action to check-in a license. Sets the license's `lastCheckIn` to the current time, and the license's
@@ -3325,6 +3379,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: incrementLicenseUsage
       summary: Increment license usage
       description: |
         Action to increment a license's `uses` attribute in accordance with its policy's `maxUses` attribute. When the
@@ -3371,6 +3426,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: decrementLicenseUsage
       summary: Decrement license usage
       description: Action to decrement a license's `uses` attribute in accordance with its policy's `maxUses` attribute.
       parameters:
@@ -3414,6 +3470,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: resetLicenseUsage
       summary: Reset license usage
       description: Action to reset a license's `uses` attribute to `0`.
       parameters:
@@ -3443,6 +3500,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: createLicenseToken
       summary: Generate a license token
       description: |
         Create a license token for a license. A license token has permission to activate and deactivate machines for the
@@ -3510,6 +3568,7 @@ paths:
     post:
       tags:
         - Licenses
+      operationId: attachLicenseEntitlements
       summary: Attach license entitlements
       description: |
         Attach entitlements to a license. This will immediately be taken into effect for all future validations.
@@ -3569,6 +3628,7 @@ paths:
     delete:
       tags:
         - Licenses
+      operationId: detachLicenseEntitlements
       summary: Detach license entitlements
       description: |
         Detach entitlements from a license. This will immediately be taken into effect for all future validations.
@@ -3604,6 +3664,7 @@ paths:
     get:
       tags:
         - Licenses
+      operationId: listLicenseEntitlements
       summary: List license entitlements
       description: |
         Returns a list of entitlements attached to the license. The entitlements are returned sorted by creation date,
@@ -3641,6 +3702,7 @@ paths:
     put:
       tags:
         - Licenses
+      operationId: changeLicensePolicy
       summary: Change policy
       description: |
         Change a license's policy relationship. This will immediately be taken into effect for all future validations.
@@ -3700,6 +3762,7 @@ paths:
     put:
       tags:
         - Licenses
+      operationId: changeLicenseUser
       summary: Change user
       description: |
         Change a license's user relationship. This will immediately transfer the license resource to the new user.
@@ -3753,6 +3816,7 @@ paths:
     put:
       tags:
         - Licenses
+      operationId: changeLicenseGroup
       summary: Change group
       description: |
         Change a license's group relationship. This will immediately transfer the license resource to the new group.
@@ -3807,6 +3871,7 @@ paths:
     post:
       tags:
         - Machines
+      operationId: activateMachine
       summary: Activate a machine
       description: Creates, or activates, a new machine resource for a license.
       parameters:
@@ -3927,6 +3992,7 @@ paths:
     get:
       tags:
         - Machines
+      operationId: listMachines
       summary: List all machines
       description: |
         Returns a list of machines. The machines are returned sorted by creation date, with the most recent machines
@@ -4024,6 +4090,7 @@ paths:
     get:
       tags:
         - Machines
+      operationId: retrieveMachine
       summary: Retrieve a machine
       description: Retrieves the details of an existing machine.
       parameters:
@@ -4052,6 +4119,7 @@ paths:
     patch:
       tags:
         - Machines
+      operationId: updateMachine
       summary: Update a machine
       description: |
         Updates the specified machine resource by setting the values of the parameters passed. Any parameters not
@@ -4168,6 +4236,7 @@ paths:
     delete:
       tags:
         - Machines
+      operationId: deactivateMachine
       summary: Deactivate a machine
       description: |
         Permanently deletes, or deactivates, a machine. It cannot be undone. This will immediately delete all processes
@@ -4199,6 +4268,7 @@ paths:
     post:
       tags:
         - Machines
+      operationId: checkOutMachine
       summary: Check-out machine
       description: |
         Action to check-out a machine. This will generate a snapshot of the machine at time of checkout, encoded into a
@@ -4267,6 +4337,7 @@ paths:
     post:
       tags:
         - Machines
+      operationId: pingMachine
       summary: Ping heartbeat
       description: |
         Action to begin or maintain a machine heartbeat monitor. When a machine has not performed a heartbeat ping
@@ -4314,6 +4385,7 @@ paths:
     post:
       tags:
         - Machines
+      operationId: resetMachine
       summary: Reset heartbeat
       description: Action to reset and stop the machine's heartbeat monitor. This will not deactivate the machine.
       parameters:
@@ -4343,6 +4415,7 @@ paths:
     put:
       tags:
         - Machines
+      operationId: changeMachineGroup
       summary: Change group
       description: |
         Change a machine's group relationship. This will immediately transfer the machine resource to the new group.
@@ -4397,6 +4470,7 @@ paths:
     post:
       tags:
         - Processes
+      operationId: spawnProcess
       summary: Spawn a process
       description: Spawns (creates) a new process resource for a machine.
       parameters:
@@ -4474,6 +4548,7 @@ paths:
     get:
       tags:
         - Processes
+      operationId: listProcesses
       summary: List all processes
       description: |
         Returns a list of processes. The processes are returned sorted by creation date, with the most recent processes
@@ -4532,6 +4607,7 @@ paths:
     get:
       tags:
         - Processes
+      operationId: retrieveProcess
       summary: Retrieve a process
       description: Retrieves the details of an existing process.
       parameters:
@@ -4560,6 +4636,7 @@ paths:
     patch:
       tags:
         - Processes
+      operationId: updateProcess
       summary: Update a process
       description: |
         Updates the specified process resource by setting the values of the parameters passed. Any parameters not
@@ -4632,6 +4709,7 @@ paths:
     delete:
       tags:
         - Processes
+      operationId: killProcess
       summary: Kill a process
       description: Permanently kills (deletes) a process. It cannot be undone.
       parameters:
@@ -4661,6 +4739,7 @@ paths:
     post:
       tags:
         - Processes
+      operationId: pingProcess
       summary: Ping
       description: |
         Action to maintain a process heartbeat ping frequency. When a process has not performed a heartbeat ping within
@@ -4711,6 +4790,7 @@ paths:
     get:
       tags:
         - Profiles
+      operationId: retrieveProfile
       summary: Who Am I?
       description: |
         Retrieves the details of the currently authenticated bearer i.e. the resource who the current API token belongs
@@ -4737,6 +4817,7 @@ paths:
     post:
       tags:
         - Passwords
+      operationId: forgotPassword
       summary: Forgot password
       description: |
         Request a password reset for a user. When the user does not already have a password, they will be invited to set
@@ -4793,6 +4874,7 @@ paths:
     post:
       tags:
         - Second factors
+      operationId: addSecondFactor
       summary: Add a second factor
       description: |
         Adds a new second factor for the user. After adding the second factor, it must be enabled via [an update](https://keygen.sh/docs/api/users/#second-factors-update).
@@ -4839,6 +4921,7 @@ paths:
     get:
       tags:
         - Second factors
+      operationId: listSecondFactors
       summary: List second factors
       description: |
         Returns a list of second factors. The second factors are returned sorted by creation date, with the most recent
@@ -4872,6 +4955,7 @@ paths:
     get:
       tags:
         - Second factors
+      operationId: retrieveSecondFactor
       summary: Retrieve a second factor
       description: Retrieves the details of an existing second factor.
       parameters:
@@ -4906,6 +4990,7 @@ paths:
     patch:
       tags:
         - Second factors
+      operationId: updateSecondFactor
       summary: Update a second factor
       description: |
         Update an existing second factor for the user. This can be used to enable and disable a second factor as-needed.
@@ -4970,6 +5055,7 @@ paths:
     delete:
       tags:
         - Second factors
+      operationId: deleteSecondFactor
       summary: Delete a second factor
       description: Permanently deletes a second factor. It cannot be undone.
       parameters:
@@ -4995,6 +5081,7 @@ webhooks:
   event:
     post:
       summary: Process an event
+      operationId: processEvent
       tags:
         - Webhooks
       requestBody:
