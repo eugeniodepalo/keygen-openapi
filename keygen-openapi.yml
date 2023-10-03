@@ -6573,6 +6573,9 @@ components:
               enum:
                 - ACTIVE
                 - INACTIVE
+                - EXPIRING
+                - EXPIRED
+                - SUSPENDED
                 - BANNED
               description: |
                 The license's status, for filtering purposes and to ascertain overall status at-a-glance. An active
