@@ -464,7 +464,7 @@ paths:
           description: Product deleted successfully
         default:
           $ref: "#/components/responses/Error"
-  /accounts/{account}/products/{product}/token:
+  /accounts/{account}/products/{product}/tokens:
     post:
       tags:
         - Products
@@ -2315,7 +2315,7 @@ paths:
                   - data
         default:
           $ref: "#/components/responses/Error"
-  /accounts/{account}/users/{user}/token:
+  /accounts/{account}/users/{user}/tokens:
     post:
       tags:
         - Users
